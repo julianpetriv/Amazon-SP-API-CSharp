@@ -1,10 +1,11 @@
-﻿using FikaAmazonAPI.Utils;
+﻿using FikaAmazonAPI.AmazonSpApiSDK.Models.Reports;
+using FikaAmazonAPI.Utils;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using FikaAmazonAPI.AmazonSpApiSDK.Models.Reports;
-using static FikaAmazonAPI.Utils.Constants;
+using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
+using static FikaAmazonAPI.Utils.Constants;
 
 namespace FikaAmazonAPI.ReportGeneration
 {
@@ -90,7 +91,7 @@ namespace FikaAmazonAPI.ReportGeneration
 
         private async Task<string> GetReturnFBAOrderAsync(AmazonConnection amazonConnection, DateTime fromDate, DateTime toDate, List<MarketPlace> marketplaces = null, CancellationToken cancellationToken = default)
         {
-            return await amazonConnection.Reports.CreateReportAndDownloadFileAsync(ReportTypes.GET_FBA_FULFILLMENT_CUSTOMER_RETURNS_DATA, fromDate, toDate, marketplaces: marketplaces,  cancellationToken: cancellationToken);
+            return await amazonConnection.Reports.CreateReportAndDownloadFileAsync(ReportTypes.GET_FBA_FULFILLMENT_CUSTOMER_RETURNS_DATA, fromDate, toDate, marketplaces: marketplaces, cancellationToken: cancellationToken);
         }
 
 
@@ -154,6 +155,20 @@ namespace FikaAmazonAPI.ReportGeneration
         private async Task<IList<string>> GetSettlementOrderAsync(AmazonConnection amazonConnection, DateTime fromDate, DateTime toDate)
         {
             return await amazonConnection.Reports.DownloadExistingReportAndDownloadFileAsync(ReportTypes.GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2, fromDate, toDate);
+        }
+        #endregion
+
+
+        #region GetUnsuppressedInventoryData
+        public async Task<List<UnsuppressedInventoryDataRow>> GetUnsuppressedInventoryDataAsync()
+        {
+            var path = await GetUnsuppressedInventoryDatayAsync(_amazonConnection);
+            var report = new UnsuppressedInventoryDataReport(path, _amazonConnection.RefNumber);
+            return report.Data;
+        }
+        private async Task<string> GetUnsuppressedInventoryDatayAsync(AmazonConnection amazonConnection)
+        {
+            return await amazonConnection.Reports.CreateReportAndDownloadFileAsync(ReportTypes.GET_FBA_MYI_UNSUPPRESSED_INVENTORY_DATA);
         }
         #endregion
 
@@ -341,6 +356,61 @@ namespace FikaAmazonAPI.ReportGeneration
         private async Task<string> GetInventoryPlanningDataAsync(AmazonConnection amazonConnection)
         {
             return await amazonConnection.Reports.CreateReportAndDownloadFileAsync(ReportTypes.GET_FBA_INVENTORY_PLANNING_DATA);
+        }
+        #endregion
+
+        #region FbaEstimateFee
+        public List<FbaEstimateFeeReportRow> GetFbaEstimateFeeData(DateTime fromDate, DateTime toDate) =>
+            Task.Run(() => GetFbaEstimateFeeDataAsync(fromDate, toDate)).ConfigureAwait(false).GetAwaiter().GetResult();
+        public async Task<List<FbaEstimateFeeReportRow>> GetFbaEstimateFeeDataAsync(DateTime fromDate, DateTime toDate)
+        {
+            List<FbaEstimateFeeReportRow> list = new List<FbaEstimateFeeReportRow>();
+
+            var path = await GetFbaEstimateFeeDataAsync(_amazonConnection, fromDate, toDate);
+            FbaEstimateFeeReport report = new FbaEstimateFeeReport(path, _amazonConnection.RefNumber);
+            list.AddRange(report.Data);
+
+            return list;
+        }
+        private async Task<string> GetFbaEstimateFeeDataAsync(AmazonConnection amazonConnection, DateTime fromDate, DateTime toDate)
+        {
+            return await amazonConnection.Reports.CreateReportAndDownloadFileAsync(ReportTypes.GET_FBA_ESTIMATED_FBA_FEES_TXT_DATA, fromDate, toDate);
+        }
+        #endregion
+
+
+        #region GetReferralFee
+        public List<ReferralFeeReportRow> GetReferralFeeReportData(DateTime fromDate, DateTime toDate) =>
+            Task.Run(() => GetReferralFeeReportDataAsync(fromDate, toDate)).ConfigureAwait(false).GetAwaiter().GetResult();
+        public async Task<List<ReferralFeeReportRow>> GetReferralFeeReportDataAsync(DateTime fromDate, DateTime toDate)
+        {
+            List<ReferralFeeReportRow> list = new List<ReferralFeeReportRow>();
+
+            var path = await GetReferralFeeReportDataAsync(_amazonConnection, fromDate, toDate);
+            ReferralFeeReport report = new ReferralFeeReport(path, _amazonConnection.RefNumber);
+            list.AddRange(report.Data);
+
+            return list;
+        }
+        private async Task<string> GetReferralFeeReportDataAsync(AmazonConnection amazonConnection, DateTime fromDate, DateTime toDate)
+        {
+            var reportPath = await amazonConnection.Reports.CreateReportAndDownloadFileAsync(ReportTypes.GET_REFERRAL_FEE_PREVIEW_REPORT, fromDate, toDate);
+            if (reportPath == null)
+            {
+                var getOldReports = amazonConnection.Reports.GetReports(new Parameter.Report.ParameterReportList()
+                {
+                    reportTypes = new ReportTypes[] { ReportTypes.GET_REFERRAL_FEE_PREVIEW_REPORT },
+                    processingStatuses = new List<ProcessingStatuses> { ProcessingStatuses.DONE }
+                });
+
+                if (getOldReports != null && getOldReports.Count > 0)
+                {
+                    var reportId = getOldReports.FirstOrDefault().ReportId;
+                    return await amazonConnection.Reports.GetReportFileByReportIdAsync(reportId, false);
+
+                }
+            }
+            return reportPath;
         }
         #endregion
     }
