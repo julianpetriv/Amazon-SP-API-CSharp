@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using static FikaAmazonAPI.Utils.Constants;
@@ -242,6 +243,15 @@ namespace FikaAmazonAPI.Services
                     var compressionFile = tempFilePath;
                     tempFilePath = FileTransform.Decompress(tempFilePath);
                     File.Delete(compressionFile);
+                }
+
+                var charset = new System.Net.Mime.ContentType(client.ResponseHeaders["Content-Type"])?.CharSet;
+
+                // convert encoding to UTF-8 if needed
+                if (charset == "Cp1252")
+                {
+                    var sourceEncoding = Encoding.GetEncoding("Windows-1252");
+                    FileTransform.ConvertEncoding(tempFilePath, sourceEncoding, new UTF8Encoding(false));
                 }
 
                 cancellationToken.ThrowIfCancellationRequested();

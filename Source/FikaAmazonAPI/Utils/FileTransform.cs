@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace FikaAmazonAPI.Utils
 {
@@ -54,6 +55,11 @@ namespace FikaAmazonAPI.Utils
             }
         }
 
-
+        public static void ConvertEncoding(string path, Encoding sourceEncoding, Encoding targetEncoding)
+        {
+            var bytes = File.ReadAllBytes(path);
+            bytes = Encoding.Convert(sourceEncoding, targetEncoding, bytes);
+            File.WriteAllBytes(path, bytes);
+        }
     }
 }
