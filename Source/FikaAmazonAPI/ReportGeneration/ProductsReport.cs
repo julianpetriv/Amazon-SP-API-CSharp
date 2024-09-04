@@ -159,7 +159,7 @@ namespace FikaAmazonAPI.ReportGeneration
             row.ProductIdType = rowData.GetInt32Nullable("product-id-type");
             row.ZshopShippingFee = rowData.GetString("zshop-shipping-fee");
             row.ItemNote = rowData.GetString("item-note");
-            row.ItemCondition = rowData.GetInt32Nullable("item-condition") ?? rowData.GetInt32Nullable("zshop-category1");
+            row.ItemCondition = rowData.GetInt32Nullable("item-condition") ?? rowData.GetInt32Nullable("zshop-category1") ?? rowData.GetInt32Nullable("Condizione dell'articolo");
             row.ZshopCategory1 = rowData.GetString("zshop-category1");
             row.ZshopBrowsePath = rowData.GetString("zshop-browse-path");
             row.ZshopStorefrontFeature = rowData.GetString("zshop-storefront-feature");
