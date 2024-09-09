@@ -147,36 +147,36 @@ namespace FikaAmazonAPI.ReportGeneration
         public static ProductsRow FromRow(TableRow rowData)
         {
             var row = new ProductsRow();
-            row.ItemName = rowData.GetString("item-name");
-            row.ItemDescription = rowData.GetString("item-description");
-            row.ListingId = rowData.GetString("listing-id");
-            row.SellerSku = rowData.GetString("seller-sku");
-            row.Price = DataConverter.GetDecimal(rowData.GetString("price"));
-            row.Quantity = rowData.GetInt32Nullable("quantity");
-            row.OpenDate = rowData.GetString("open-date");
+            row.ItemName = rowData.GetString("item-name") ?? rowData.GetString("Nome dell'articolo");
+            row.ItemDescription = rowData.GetString("item-description") ?? rowData.GetString("Descrizione dell'articolo");
+            row.ListingId = rowData.GetString("listing-id") ?? rowData.GetString("Numero offerta");
+            row.SellerSku = rowData.GetString("seller-sku") ?? rowData.GetString("SKU venditore");
+            row.Price = DataConverter.GetDecimal(rowData.GetString("price")) ?? DataConverter.GetDecimal(rowData.GetString("Prezzo"));
+            row.Quantity = rowData.GetInt32Nullable("quantity") ?? rowData.GetInt32Nullable("Quantità");
+            row.OpenDate = rowData.GetString("open-date") ?? rowData.GetString("Data di creazione");
             row.ImageUrl = rowData.GetString("image-url");
             row.ItemIsMarketplace = rowData.GetString("item-is-marketplace") == "y";
-            row.ProductIdType = rowData.GetInt32Nullable("product-id-type");
+            row.ProductIdType = rowData.GetInt32Nullable("product-id-type") ?? rowData.GetInt32Nullable("Tipo di identificativo del prodotto");
             row.ZshopShippingFee = rowData.GetString("zshop-shipping-fee");
             row.ItemNote = rowData.GetString("item-note");
             row.ItemCondition = rowData.GetInt32Nullable("item-condition") ?? rowData.GetInt32Nullable("zshop-category1") ?? rowData.GetInt32Nullable("Condizione dell'articolo");
             row.ZshopCategory1 = rowData.GetString("zshop-category1");
             row.ZshopBrowsePath = rowData.GetString("zshop-browse-path");
             row.ZshopStorefrontFeature = rowData.GetString("zshop-storefront-feature");
-            row.ASIN1 = rowData.GetString("asin1");
+            row.ASIN1 = rowData.GetString("asin1") ?? rowData.GetString("ASIN 1");
             row.ASIN2 = rowData.GetString("asin2");
             row.ASIN3 = rowData.GetString("asin3");
             row.WillShipInternationally = rowData.GetString("will-ship-internationally");
             row.ExpeditedShipping = rowData.GetString("expedited-shipping");
             row.ZshopBoldface = rowData.GetString("zshop-boldface");
-            row.ProductId = rowData.GetString("product-id");
+            row.ProductId = rowData.GetString("product-id") ?? rowData.GetString("Identificativo del prodotto");
             row.BidForFeaturedPlacement = rowData.GetString("bid-for-featured-placement");
             row.AddDelete = rowData.GetString("add-delete");
-            row.PendingQuantity = rowData.GetInt32Nullable("pending-quantity");
-            row.FulfillmentChannel = rowData.GetString("fulfillment-channel") ?? rowData.GetString("fulfilment-channel");
+            row.PendingQuantity = rowData.GetInt32Nullable("pending-quantity") ?? rowData.GetInt32Nullable("Quantità in sospeso");
+            row.FulfillmentChannel = rowData.GetString("fulfillment-channel") ?? rowData.GetString("fulfilment-channel") ?? rowData.GetString("Canale di gestione");
             row.OptionalPaymentTypeExclusion = rowData.GetString("optional-payment-type-exclusion");
-            row.Status = rowData.GetString("status");
-            row.MerchantShippingGroup = rowData.GetString("merchant-shipping-group");
+            row.Status = rowData.GetString("status") ?? rowData.GetString("stato");
+            row.MerchantShippingGroup = rowData.GetString("merchant-shipping-group") ?? rowData.GetString("gruppo-spedizione-venditore");
 
             return row;
         }
