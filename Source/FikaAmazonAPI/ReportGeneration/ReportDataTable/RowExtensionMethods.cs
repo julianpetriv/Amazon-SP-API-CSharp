@@ -166,7 +166,9 @@ namespace FikaAmazonAPI.ReportGeneration.ReportDataTable
         }
         private static string TheValue(string txt)
         {
-            return Regex.Replace(txt, "^\"|\"$", "");
+            if (txt.StartsWith("\"") && txt.EndsWith("\""))
+                return txt.Substring(1, txt.Length - 2);
+            return txt;
         }
     }
 }
