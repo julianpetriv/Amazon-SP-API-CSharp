@@ -4,6 +4,7 @@ using FikaAmazonAPI.AmazonSpApiSDK.Models.Token;
 using FikaAmazonAPI.Parameter;
 using FikaAmazonAPI.Parameter.Report;
 using FikaAmazonAPI.Utils;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +18,7 @@ namespace FikaAmazonAPI.Services
 {
     public class ReportService : RequestService
     {
-        public ReportService(AmazonCredential amazonCredential) : base(amazonCredential)
+        public ReportService(AmazonCredential amazonCredential, ILoggerFactory? loggerFactory) : base(amazonCredential, loggerFactory)
         {
         }
         #region GetReport
@@ -307,7 +308,7 @@ namespace FikaAmazonAPI.Services
 
             parameters.marketplaceIds = new MarketplaceIds();
 
-            if (marketplaces == null || marketplaces.Count() == 0)
+            if (marketplaces == null || !marketplaces.Any())
             {
                 parameters.marketplaceIds.Add(AmazonCredential.MarketPlace.ID);
             }
@@ -334,7 +335,7 @@ namespace FikaAmazonAPI.Services
             var filePath = string.Empty;
             string ReportDocumentId = string.Empty;
 
-            while (string.IsNullOrEmpty(ReportDocumentId))
+            while (string.IsNullOrEmpty(ReportDocumentId) && !cancellationToken.IsCancellationRequested)
             {
                 var reportData = await GetReportAsync(reportId, cancellationToken);
                 if (!string.IsNullOrEmpty(reportData.ReportDocumentId))
