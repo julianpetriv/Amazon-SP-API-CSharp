@@ -100,9 +100,17 @@ namespace FikaAmazonAPI.Services
         public FeedDocument GetFeedDocument(string feedDocumentId) =>
             Task.Run(() => GetFeedDocumentAsync(feedDocumentId)).ConfigureAwait(false).GetAwaiter().GetResult();
 
-        public async Task<FeedDocument> GetFeedDocumentAsync(string feedDocumentId, CancellationToken cancellationToken = default)
+        public async Task<FeedDocument> GetFeedDocumentAsync(string feedDocumentId, CancellationToken cancellationToken = default, bool enableContentEncodingUrlHeader = false)
         {
-            await CreateAuthorizedRequestAsync(FeedsApiUrls.GetFeedDocument(feedDocumentId), RestSharp.Method.Get, cancellationToken: cancellationToken);
+            List<KeyValuePair<string, string>> queryParameters = null;
+            if (enableContentEncodingUrlHeader)
+            {
+                queryParameters = new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("enableContentEncodingUrlHeader", "true")
+                };
+            }
+            await CreateAuthorizedRequestAsync(FeedsApiUrls.GetFeedDocument(feedDocumentId), RestSharp.Method.Get, queryParameters, cancellationToken: cancellationToken);
             var response = await ExecuteRequestAsync<FeedDocument>(RateLimitType.Feed_GetFeedDocument, cancellationToken);
             if (response != null)
                 return response;
@@ -129,7 +137,7 @@ namespace FikaAmazonAPI.Services
                 {
                     response = (FeedAmazonEnvelope)xmlSerializer.Deserialize(stream);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     StreamReader reader = new StreamReader(stream);
                     responseContent = reader.ReadToEnd();
@@ -139,7 +147,7 @@ namespace FikaAmazonAPI.Services
                 processingReport = response.Message[0].ProcessingReport;
 
             }
-            catch (AmazonProcessingReportDeserializeException ex)
+            catch (AmazonProcessingReportDeserializeException)
             {
                 throw;
             }
@@ -165,7 +173,7 @@ namespace FikaAmazonAPI.Services
                 {
                     response = (FeedAmazonEnvelope)xmlSerializer.Deserialize(stream);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     StreamReader reader = new StreamReader(stream);
                     responseContent = await reader.ReadToEndAsync();
@@ -175,7 +183,7 @@ namespace FikaAmazonAPI.Services
                 processingReport = response.Message[0].ProcessingReport;
 
             }
-            catch (AmazonProcessingReportDeserializeException ex)
+            catch (AmazonProcessingReportDeserializeException)
             {
                 throw;
             }
@@ -218,19 +226,19 @@ namespace FikaAmazonAPI.Services
             return null;
         }
 
-        public string SubmitFeedFile(string FilePath, FeedType feedType, List<string> marketPlaceIds = null, FeedOptions feedOptions = null, ContentType contentType = ContentType.XML) =>
+        public string SubmitFeedFile(string FilePath, FeedType feedType, List<string>? marketPlaceIds = null, FeedOptions? feedOptions = null, ContentType contentType = ContentType.XML) =>
             Task.Run(() => SubmitFeedAsync(FilePath, feedType, marketPlaceIds, feedOptions, contentType, ContentFormate.File)).ConfigureAwait(false).GetAwaiter().GetResult();
 
-        public async Task<string> SubmitFeedFileAsync(string FilePath, FeedType feedType, List<string> marketPlaceIds = null, FeedOptions feedOptions = null, ContentType contentType = ContentType.XML, CancellationToken cancellationToken = default) =>
+        public async Task<string> SubmitFeedFileAsync(string FilePath, FeedType feedType, List<string>? marketPlaceIds = null, FeedOptions? feedOptions = null, ContentType contentType = ContentType.XML, CancellationToken cancellationToken = default) =>
             await SubmitFeedAsync(FilePath, feedType, marketPlaceIds, feedOptions, contentType, ContentFormate.File, cancellationToken);
 
-        public string SubmitFeedContent(string Content, FeedType feedType, List<string> marketPlaceIds = null, FeedOptions feedOptions = null, ContentType contentType = ContentType.XML) =>
+        public string SubmitFeedContent(string Content, FeedType feedType, List<string>? marketPlaceIds = null, FeedOptions? feedOptions = null, ContentType contentType = ContentType.XML) =>
             Task.Run(() => SubmitFeedAsync(Content, feedType, marketPlaceIds, feedOptions, contentType, ContentFormate.Text)).ConfigureAwait(false).GetAwaiter().GetResult();
 
-        public async Task<string> SubmitFeedContentAsync(string Content, FeedType feedType, List<string> marketPlaceIds = null, FeedOptions feedOptions = null, ContentType contentType = ContentType.XML, CancellationToken cancellationToken = default) =>
+        public async Task<string> SubmitFeedContentAsync(string Content, FeedType feedType, List<string>? marketPlaceIds = null, FeedOptions? feedOptions = null, ContentType contentType = ContentType.XML, CancellationToken cancellationToken = default) =>
             await SubmitFeedAsync(Content, feedType, marketPlaceIds, feedOptions, contentType, ContentFormate.Text, cancellationToken);
 
-        public string SubmitFeed(string XmlContentOrFilePath, FeedType feedType, List<string> marketPlaceIds = null, FeedOptions feedOptions = null, ContentType contentType = ContentType.XML, ContentFormate contentFormate = ContentFormate.AutoDetect) =>
+        public string SubmitFeed(string XmlContentOrFilePath, FeedType feedType, List<string>? marketPlaceIds = null, FeedOptions? feedOptions = null, ContentType contentType = ContentType.XML, ContentFormate contentFormate = ContentFormate.AutoDetect) =>
             Task.Run(() => SubmitFeedAsync(XmlContentOrFilePath, feedType, marketPlaceIds, feedOptions, contentType, contentFormate)).ConfigureAwait(false).GetAwaiter().GetResult();
 
         /// <summary>
@@ -239,7 +247,7 @@ namespace FikaAmazonAPI.Services
         /// <param name="xml"></param>
         /// <param name="feedType"></param>
         /// <returns></returns>
-        public async Task<string> SubmitFeedAsync(string feedContentOrFilePath, FeedType feedType, List<string> marketPlaceIds = null, FeedOptions feedOptions = null, ContentType contentType = ContentType.XML, ContentFormate contentFormate = ContentFormate.AutoDetect, CancellationToken cancellationToken = default)
+        public async Task<string> SubmitFeedAsync(string feedContentOrFilePath, FeedType feedType, List<string>? marketPlaceIds = null, FeedOptions? feedOptions = null, ContentType contentType = ContentType.XML, ContentFormate contentFormate = ContentFormate.AutoDetect, CancellationToken cancellationToken = default)
         {
             //We are creating Feed Document
             var feedCreate = await CreateFeedDocumentAsync(contentType, cancellationToken);

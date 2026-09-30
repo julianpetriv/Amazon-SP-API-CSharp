@@ -389,6 +389,8 @@ namespace FikaAmazonAPI.AmazonSpApiSDK.Services
             private static readonly string _resourceBaseUrl_v20220501 = "/products/pricing/2022-05-01";
             public static string FeaturedOfferExpectedPriceUri => $"{_resourceBaseUrl_v20220501}/offer/featuredOfferExpectedPrice";
             public static string GetFeaturedOfferExpectedPriceBatch => $"/batches{FeaturedOfferExpectedPriceUri}";
+            public static string CompetitiveSummaryUri => $"{_resourceBaseUrl_v20220501}/items/competitiveSummary";
+            public static string GetCompetitiveSummary => $"/batches{CompetitiveSummaryUri}";
             #endregion
         }
         protected class ProductTypeApiUrls
@@ -428,6 +430,83 @@ namespace FikaAmazonAPI.AmazonSpApiSDK.Services
             public static string CancelReportSchedule(string reportScheduleId) => $"{_resourceBaseUrl}/schedules/{reportScheduleId}";
             public static string GetReportDocument(string reportDocumentId) => $"{_resourceBaseUrl}/documents/{reportDocumentId}";
         }
+        
+        protected class VendorDirectFulfillmentInventoryApiUrls
+        {
+            private static readonly string _resourceBaseUrl = "/vendor/directFulfillment/inventory/v1";
+
+            public static string SubmitInventoryUpdate(string warehouseId)
+            {
+                return $"{_resourceBaseUrl}/warehouses/{warehouseId}/items";
+            }
+        }
+
+        protected class VendorDirectFulfillmentPaymentsApiUrls
+        {
+            private static readonly string _resourceBaseUrl = "/vendor/directFulfillment/payments/v1";
+
+            public static string SubmitInvoice => $"{_resourceBaseUrl}/invoices";
+        }
+
+        protected class VendorDirectFulfillmentTransactionsApiUrls
+        {
+            private static readonly string _resourceBaseUrl = "/vendor/directFulfillment/transactions/v1";
+
+            public static string GetTransactionStatus(string transactionId) => $"{_resourceBaseUrl}/transactions/{transactionId}";
+        }
+
+        protected class VendorDirectFulfillmentShippingApiUrls
+        {
+            private static readonly string _resourceBaseUrl = "/vendor/directFulfillment/shipping/v1";
+
+            public static string ShippingLabels => $"{_resourceBaseUrl}/shippingLabels";
+            public static string ShippingLabel(string purchaseOrderNumber) => $"{_resourceBaseUrl}/shippingLabels/{purchaseOrderNumber}";
+            public static string ShipmentConfirmations => $"{_resourceBaseUrl}/shipmentConfirmations";
+            public static string ShipmentStatusUpdates => $"{_resourceBaseUrl}/shipmentStatusUpdates";
+            public static string CustomerInvoices => $"{_resourceBaseUrl}/customerInvoices";
+            public static string CustomerInvoice(string purchaseOrderNumber) => $"{_resourceBaseUrl}/customerInvoices/{purchaseOrderNumber}";
+            public static string PackingSlips => $"{_resourceBaseUrl}/packingSlips";
+            public static string PackingSlip(string purchaseOrderNumber) => $"{_resourceBaseUrl}/packingSlips/{purchaseOrderNumber}";
+        }
+
+        protected class VendorShipmentsApiUrls
+        {
+            private static readonly string _resourceBaseUrl = "/vendor/shipping/v1";
+
+            public static string ShipmentConfirmations => $"{_resourceBaseUrl}/shipmentConfirmations";
+            public static string Shipments => $"{_resourceBaseUrl}/shipments";
+            public static string TransportLabels => $"{_resourceBaseUrl}/transportLabels";
+        }
+
+        protected class VendorInvoicesApiUrls
+        {
+            private static readonly string _resourceBaseUrl = "/vendor/payments/v1";
+
+            public static string SubmitInvoices => $"{_resourceBaseUrl}/invoices";
+        }
+
+        protected class DataKioskApiUrls
+        {
+            private static readonly string _resourceBaseUrl = "/dataKiosk/2023-11-15";
+
+            public static string Queries => $"{_resourceBaseUrl}/queries";
+            public static string Query(string queryId) => $"{_resourceBaseUrl}/queries/{queryId}";
+            public static string Document(string documentId) => $"{_resourceBaseUrl}/documents/{documentId}";
+        }
+
+        protected class ExternalFulfillmentShipmentApiUrls
+        {
+            private static readonly string _resourceBaseUrl = "/externalFulfillment/2024-09-11";
+
+            public static string Shipments => $"{_resourceBaseUrl}/shipments";
+            public static string Shipment(string shipmentId) => $"{_resourceBaseUrl}/shipments/{shipmentId}";
+            public static string Packages(string shipmentId) => $"{Shipment(shipmentId)}/packages";
+            public static string Package(string shipmentId, string packageId) => $"{Packages(shipmentId)}/{packageId}";
+            public static string ShippingOptions(string shipmentId) => $"{Shipment(shipmentId)}/shippingOptions";
+            public static string Invoice(string shipmentId) => $"{Shipment(shipmentId)}/invoice";
+            public static string ShipLabels(string shipmentId) => $"{Shipment(shipmentId)}/shipLabels";
+        }
+
         protected class VendorDirectFulfillmentOrdersApiUrls
         {
             private readonly static string _resourceBaseUrl = "/vendor/directFulfillment/orders/v1";
@@ -521,7 +600,22 @@ namespace FikaAmazonAPI.AmazonSpApiSDK.Services
             {
                 get => $"{_resourceBaseUrl}/financialEvents";
             }
+            public static string Transactions
+            {
+                get => $"{_resourceBaseUrl}/financialEvents";
+            }
+
         }
+        protected class FinanceV20240619ApiUrls
+        {
+            private readonly static string _resourceBaseUrl = "/finances/2024-06-19";
+            public static string Transactions
+            {
+                get => $"{_resourceBaseUrl}/transactions";
+            }
+        }
+
+        
 
         protected class AccountApiUrls
         {
@@ -617,6 +711,15 @@ namespace FikaAmazonAPI.AmazonSpApiSDK.Services
             public static string GetOrderItemsApprovals(string orderId) => $"{_resourceBaseUrl}/orders/{orderId}/approvals";
             public static string UpdateOrderItemsApprovals(string orderId) => $"{_resourceBaseUrl}/orders/{orderId}/approvals";
             public static string ConfirmShipment(string orderId) => $"{_resourceBaseUrl}/orders/{orderId}/shipmentConfirmation";
+
+            #region V20260101
+            private readonly static string _resourceBaseUrl_V20260101 = "/orders/2026-01-01";
+            public static string SearchOrdersV20260101
+            {
+                get => $"{_resourceBaseUrl_V20260101}/orders";
+            }
+            public static string GetOrderV20260101(string orderId) => $"{_resourceBaseUrl_V20260101}/orders/{orderId}";
+            #endregion
         }
 
         protected class CategoryApiUrls
@@ -675,8 +778,6 @@ namespace FikaAmazonAPI.AmazonSpApiSDK.Services
 
         protected class AppIntegrationsApiUrls
         {
-            private readonly static string _resourceBaseUrl = "appIntegrations";
-
             #region V20240401
             private readonly static string _resourceBaseUrl_V20240401 = "appIntegrations/2024-04-01";
 
@@ -693,6 +794,44 @@ namespace FikaAmazonAPI.AmazonSpApiSDK.Services
             public static string RecordActionFeedback(string notificationId) => $"{_resourceBaseUrl_V20240401}/notifications/{notificationId}/feedback";
 
             #endregion
+        }
+
+        protected class ServiceApiUrls
+        {
+            private readonly static string _resourceBaseUrl = "/service/v1";
+            public static string GetServiceJobByServiceJobId(string serviceJobId) => $"{_resourceBaseUrl}/serviceJobs/{serviceJobId}";
+            public static string GetServiceJobs => $"{_resourceBaseUrl}/serviceJobs";
+            public static string CancelServiceJobByServiceJobId(string serviceJobId) => $"{_resourceBaseUrl}/serviceJobs/{serviceJobId}/cancellations";
+            public static string CompleteServiceJobByServiceJobId(string serviceJobId) => $"{_resourceBaseUrl}/serviceJobs/{serviceJobId}/completions";
+        }
+
+        protected class ReplenishmentApiUrls
+        {
+            private readonly static string _resourceBaseUrl = "/replenishment/2022-11-07";
+            public static string ListOffers => $"{_resourceBaseUrl}/offers/search";
+            public static string ListOfferMetrics => $"{_resourceBaseUrl}/offers/metrics/search";
+            public static string GetSellingPartnerMetrics => $"{_resourceBaseUrl}/sellingPartners/metrics/search";
+        }
+
+        protected class AplusContentApiUrls
+        {
+            private readonly static string _resourceBaseUrl = "/aplus/2020-11-01";
+            public static string SearchContentDocuments => $"{_resourceBaseUrl}/contentDocuments";
+            public static string CreateContentDocument => $"{_resourceBaseUrl}/contentDocuments";
+            public static string GetContentDocument(string contentReferenceKey) => $"{_resourceBaseUrl}/contentDocuments/{contentReferenceKey}";
+            public static string UpdateContentDocument(string contentReferenceKey) => $"{_resourceBaseUrl}/contentDocuments/{contentReferenceKey}";
+            public static string ListContentDocumentAsinRelations(string contentReferenceKey) => $"{_resourceBaseUrl}/contentDocuments/{contentReferenceKey}/asins";
+            public static string PostContentDocumentAsinRelations(string contentReferenceKey) => $"{_resourceBaseUrl}/contentDocuments/{contentReferenceKey}/asins";
+            public static string ValidateContentDocumentAsinRelations => $"{_resourceBaseUrl}/contentAsinValidations";
+            public static string SearchContentPublishRecords => $"{_resourceBaseUrl}/contentPublishRecords";
+            public static string PostContentDocumentApprovalSubmission(string contentReferenceKey) => $"{_resourceBaseUrl}/contentDocuments/{contentReferenceKey}/approvalSubmissions";
+            public static string PostContentDocumentSuspendSubmission(string contentReferenceKey) => $"{_resourceBaseUrl}/contentDocuments/{contentReferenceKey}/suspendSubmissions";
+        }
+
+        protected class ApplicationManagementApiUrls
+        {
+            private readonly static string _resourceBaseUrl = "/applications/2023-11-30";
+            public static string RotateApplicationClientSecret => $"{_resourceBaseUrl}/clientSecret";
         }
 
     }

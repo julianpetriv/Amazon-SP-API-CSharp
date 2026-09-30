@@ -19,6 +19,8 @@
         Order_UpdateVerificationStatus,
         Order_UpdateOrderItemsApprovals,
         Order_ShipmentConfirmation,
+        OrderV20260101_SearchOrders,
+        OrderV20260101_GetOrder,
 
         Report_GetReports,
         Report_GetReport,
@@ -34,6 +36,8 @@
         Financial_ListFinancialEventsByGroupId,
         Financial_ListFinancialEventsByOrderId,
         Financial_ListFinancialEvents,
+
+        FinancialV20240619_Transactions,
 
         Feed_GetFeeds,
         Feed_CreateFeed,
@@ -205,6 +209,7 @@
         ProductPricing_GetItemOffers,
         ProductPricing_GetItemOffersBatch,
         ProductPricing_GetListingOffersBatch,
+        ProductPricing_GetCompetitiveSummary,
 
         Sales_GetOrderMetrics,
 
@@ -238,6 +243,68 @@
         VendorOrdersV1_GetPurchaseOrdersStatus,
 
 		VendorTransactionStatus_GetTransaction,
+        
+        VendorDirectFulfillmentInventory_SubmitInventoryUpdate,
+
+        VendorDirectFulfillmentPayments_SubmitInvoice,
+
+        VendorDirectFulfillmentTransactions_GetTransactionStatus,
+
+        VendorDirectFulfillmentShipping_GetShippingLabels,
+        VendorDirectFulfillmentShipping_SubmitShippingLabelRequest,
+        VendorDirectFulfillmentShipping_GetShippingLabel,
+        VendorDirectFulfillmentShipping_SubmitShipmentConfirmations,
+        VendorDirectFulfillmentShipping_SubmitShipmentStatusUpdates,
+        VendorDirectFulfillmentShipping_GetCustomerInvoices,
+        VendorDirectFulfillmentShipping_GetCustomerInvoice,
+        VendorDirectFulfillmentShipping_GetPackingSlips,
+        VendorDirectFulfillmentShipping_GetPackingSlip,
+
+        VendorShipments_SubmitShipmentConfirmations,
+        VendorShipments_SubmitShipments,
+        VendorShipments_GetShipmentDetails,
+        VendorShipments_GetShipmentLabels,
+
+        VendorInvoices_SubmitInvoices,
+
+        DataKiosk_GetQueries,
+        DataKiosk_CreateQuery,
+        DataKiosk_CancelQuery,
+        DataKiosk_GetQuery,
+        DataKiosk_GetDocument,
+
+        ExternalFulfillmentShipment_GetShipments,
+        ExternalFulfillmentShipment_GetShipment,
+        ExternalFulfillmentShipment_ProcessShipment,
+        ExternalFulfillmentShipment_CreatePackages,
+        ExternalFulfillmentShipment_UpdatePackage,
+        ExternalFulfillmentShipment_RetrieveShippingOptions,
+        ExternalFulfillmentShipment_GenerateShipLabels,
+        ExternalFulfillmentShipment_GenerateInvoice,
+        ExternalFulfillmentShipment_RetrieveInvoice,
+        ExternalFulfillmentShipment_UpdatePackageStatus,
+
+        Service_GetServiceJobByServiceJobId,
+        Service_GetServiceJobs,
+        Service_CancelServiceJobByServiceJobId,
+        Service_CompleteServiceJobByServiceJobId,
+
+        Replenishment_ListOffers,
+        Replenishment_ListOfferMetrics,
+        Replenishment_GetSellingPartnerMetrics,
+
+        ApplicationManagement_RotateApplicationClientSecret,
+
+        AplusContent_SearchContentDocuments,
+        AplusContent_CreateContentDocument,
+        AplusContent_GetContentDocument,
+        AplusContent_UpdateContentDocument,
+        AplusContent_ListContentDocumentAsinRelations,
+        AplusContent_PostContentDocumentAsinRelations,
+        AplusContent_ValidateContentDocumentAsinRelations,
+        AplusContent_SearchContentPublishRecords,
+        AplusContent_PostContentDocumentApprovalSubmission,
+        AplusContent_PostContentDocumentSuspendSubmission,
 
     }
 }

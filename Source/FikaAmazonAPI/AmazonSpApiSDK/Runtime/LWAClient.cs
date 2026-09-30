@@ -1,10 +1,12 @@
 ﻿using FikaAmazonAPI.AmazonSpApiSDK.Models.Token;
+using FikaAmazonAPI.RestSharp;
 using Newtonsoft.Json;
-using RestSharp;
 using System;
 using System.IO;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace FikaAmazonAPI.AmazonSpApiSDK.Runtime
 {
@@ -18,27 +20,16 @@ namespace FikaAmazonAPI.AmazonSpApiSDK.Runtime
         public LWAAuthorizationCredentials LWAAuthorizationCredentials { get; private set; }
 
 
-        public LWAClient(LWAAuthorizationCredentials lwaAuthorizationCredentials, string proxyAddress = null)
+        public LWAClient(LWAAuthorizationCredentials lwaAuthorizationCredentials, IWebProxy? proxy = null)
         {
 
             LWAAuthorizationCredentials = lwaAuthorizationCredentials;
             LWAAccessTokenRequestMetaBuilder = new LWAAccessTokenRequestMetaBuilder();
-            // RestClient = new RestClient(LWAAuthorizationCredentials.Endpoint.GetLeftPart(UriPartial.Authority));
-            if (string.IsNullOrWhiteSpace(proxyAddress))
+            var options = new RestClientOptions(LWAAuthorizationCredentials.Endpoint.GetLeftPart(UriPartial.Authority))
             {
-                RestClient = new RestClient(LWAAuthorizationCredentials.Endpoint.GetLeftPart(UriPartial.Authority));
-            }else
-            {
-                var options = new RestClientOptions(LWAAuthorizationCredentials.Endpoint.GetLeftPart(UriPartial.Authority))
-                {
-                    Proxy = new System.Net.WebProxy()
-                    {
-                        Address = new Uri(proxyAddress)
-                    }
-                };
-
-                RestClient = new RestClient(options);
-            }
+                Proxy = proxy
+            };
+            RestClient = new RestClient(options);
         }
 
 
@@ -63,17 +54,19 @@ namespace FikaAmazonAPI.AmazonSpApiSDK.Runtime
 
                 if (!IsSuccessful(response))
                 {
-                    throw new IOException("Unsuccessful LWA token exchange", response.ErrorException);
+                    var message = string.IsNullOrEmpty(response.ErrorMessage)
+                        ? $"Unsuccessful LWA token exchange: {response.Content}"
+                        : $"Unsuccessful LWA token exchange: {response.ErrorMessage}";
+                    throw new IOException(message);
                 }
 
-                TokenResponse tokenService = new TokenResponse();
-
-                var tokenRespoce = JsonConvert.DeserializeObject<TokenResponse>(response.Content);
-                return tokenRespoce;
+                var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(response.Content);
+                return tokenResponse;
             }
             catch (Exception e)
             {
-                throw new SystemException("Error getting LWA Access Token", e);
+                //Debug.WriteLine(e.Message + Environment.NewLine + e.InnerException?.Message);
+                throw new SystemException("Error getting LWA Access Token!", e);
             }
         }
 

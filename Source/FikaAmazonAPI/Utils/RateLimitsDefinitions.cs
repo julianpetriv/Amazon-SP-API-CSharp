@@ -24,6 +24,8 @@ namespace FikaAmazonAPI.Utils
               { RateLimitType.Order_UpdateVerificationStatus,             new RateLimits(0.5M, 30) },
               { RateLimitType.Order_UpdateOrderItemsApprovals,            new RateLimits(5M, 15) },
               { RateLimitType.Order_ShipmentConfirmation,                 new RateLimits(2M, 10) },
+              { RateLimitType.OrderV20260101_SearchOrders,                new RateLimits(0.0056M, 20) },
+              { RateLimitType.OrderV20260101_GetOrder,                    new RateLimits(0.5M, 30) },
 
               { RateLimitType.Report_GetReports,                          new RateLimits(0.0222M, 10) },
               { RateLimitType.Report_GetReport,                           new RateLimits(2.0M, 15) },
@@ -39,6 +41,8 @@ namespace FikaAmazonAPI.Utils
               { RateLimitType.Financial_ListFinancialEventsByGroupId,     new RateLimits(0.5M, 30) },
               { RateLimitType.Financial_ListFinancialEventsByOrderId,     new RateLimits(0.5M, 30) },
               { RateLimitType.Financial_ListFinancialEvents,              new RateLimits(0.5M, 30) },
+
+              { RateLimitType.FinancialV20240619_Transactions,            new RateLimits(0.5M, 10) },
 
               { RateLimitType.Feed_GetFeeds,                              new RateLimits(0.0222M, 10) },
               { RateLimitType.Feed_CreateFeed,                            new RateLimits(0.0083M, 15) },
@@ -226,6 +230,7 @@ namespace FikaAmazonAPI.Utils
 
               { RateLimitType.ProductPricing_GetItemOffersBatch,                   new RateLimits(0.1M, 1) },
               { RateLimitType.ProductPricing_GetListingOffersBatch,                   new RateLimits(0.5M, 1) },
+              { RateLimitType.ProductPricing_GetCompetitiveSummary,                   new RateLimits(0.033M, 1) },
 
               { RateLimitType.Sales_GetOrderMetrics,                          new RateLimits(0.5M, 15) },
 
@@ -246,6 +251,71 @@ namespace FikaAmazonAPI.Utils
               { RateLimitType.VendorOrdersV1_GetPurchaseOrdersStatus,   new RateLimits(10.0M, 10) },
 
               { RateLimitType.VendorTransactionStatus_GetTransaction,     new RateLimits(10.0M, 10) },
+              
+              { RateLimitType.VendorDirectFulfillmentInventory_SubmitInventoryUpdate, new RateLimits(10M, 10) },
+
+              { RateLimitType.VendorDirectFulfillmentPayments_SubmitInvoice,         new RateLimits(10M, 10) },
+
+              { RateLimitType.VendorDirectFulfillmentTransactions_GetTransactionStatus, new RateLimits(10M, 10) },
+
+              { RateLimitType.VendorDirectFulfillmentShipping_GetShippingLabels,             new RateLimits(10M, 10) },
+              { RateLimitType.VendorDirectFulfillmentShipping_SubmitShippingLabelRequest,    new RateLimits(10M, 10) },
+              { RateLimitType.VendorDirectFulfillmentShipping_GetShippingLabel,              new RateLimits(10M, 10) },
+              { RateLimitType.VendorDirectFulfillmentShipping_SubmitShipmentConfirmations,   new RateLimits(10M, 10) },
+              { RateLimitType.VendorDirectFulfillmentShipping_SubmitShipmentStatusUpdates,   new RateLimits(10M, 10) },
+              { RateLimitType.VendorDirectFulfillmentShipping_GetCustomerInvoices,           new RateLimits(10M, 10) },
+              { RateLimitType.VendorDirectFulfillmentShipping_GetCustomerInvoice,            new RateLimits(10M, 10) },
+              { RateLimitType.VendorDirectFulfillmentShipping_GetPackingSlips,               new RateLimits(10M, 10) },
+              { RateLimitType.VendorDirectFulfillmentShipping_GetPackingSlip,                new RateLimits(10M, 10) },
+
+              { RateLimitType.VendorShipments_SubmitShipmentConfirmations,   new RateLimits(10M, 10) },
+              { RateLimitType.VendorShipments_SubmitShipments,               new RateLimits(10M, 10) },
+              { RateLimitType.VendorShipments_GetShipmentDetails,            new RateLimits(10M, 10) },
+              { RateLimitType.VendorShipments_GetShipmentLabels,             new RateLimits(10M, 10) },
+
+              { RateLimitType.VendorInvoices_SubmitInvoices,                 new RateLimits(10M, 10) },
+
+              { RateLimitType.DataKiosk_GetQueries,     new RateLimits(0.0222M, 10) },
+              { RateLimitType.DataKiosk_CreateQuery,    new RateLimits(0.0167M, 15) },
+              { RateLimitType.DataKiosk_CancelQuery,    new RateLimits(0.0222M, 10) },
+              { RateLimitType.DataKiosk_GetQuery,       new RateLimits(0.0222M, 10) },
+              { RateLimitType.DataKiosk_GetDocument,    new RateLimits(0.0167M, 15) },
+
+              { RateLimitType.ExternalFulfillmentShipment_GetShipments,              new RateLimits(2.0M, 5) },
+              { RateLimitType.ExternalFulfillmentShipment_GetShipment,               new RateLimits(2.0M, 5) },
+              { RateLimitType.ExternalFulfillmentShipment_ProcessShipment,           new RateLimits(1.0M, 5) },
+              { RateLimitType.ExternalFulfillmentShipment_CreatePackages,            new RateLimits(1.0M, 5) },
+              { RateLimitType.ExternalFulfillmentShipment_UpdatePackage,             new RateLimits(1.0M, 5) },
+              { RateLimitType.ExternalFulfillmentShipment_RetrieveShippingOptions,   new RateLimits(1.0M, 5) },
+              { RateLimitType.ExternalFulfillmentShipment_GenerateShipLabels,        new RateLimits(1.0M, 5) },
+              { RateLimitType.ExternalFulfillmentShipment_GenerateInvoice,           new RateLimits(1.0M, 5) },
+              { RateLimitType.ExternalFulfillmentShipment_RetrieveInvoice,           new RateLimits(1.0M, 5) },
+              { RateLimitType.ExternalFulfillmentShipment_UpdatePackageStatus,       new RateLimits(1.0M, 5) },
+
+              { RateLimitType.Service_GetServiceJobByServiceJobId,       new RateLimits(20.0M, 40) },
+              { RateLimitType.Service_GetServiceJobs,                    new RateLimits(10.0M, 40) },
+              { RateLimitType.Service_CancelServiceJobByServiceJobId,    new RateLimits(5.0M, 20) },
+              { RateLimitType.Service_CompleteServiceJobByServiceJobId,  new RateLimits(5.0M, 20) },
+
+              { RateLimitType.Replenishment_ListOffers,                  new RateLimits(1.0M, 1) },
+              { RateLimitType.Replenishment_ListOfferMetrics,            new RateLimits(1.0M, 1) },
+              { RateLimitType.Replenishment_GetSellingPartnerMetrics,    new RateLimits(1.0M, 1) },
+
+              // Rotation is bounded by the underlying secret cycle, not a per-second budget;
+              // defend with ~1 call/min so callers can't accidentally hammer it.
+              { RateLimitType.ApplicationManagement_RotateApplicationClientSecret, new RateLimits(0.0167M, 1) },
+
+              // All A+ Content operations share 10 req/s, burst 10 per spec.
+              { RateLimitType.AplusContent_SearchContentDocuments,                  new RateLimits(10.0M, 10) },
+              { RateLimitType.AplusContent_CreateContentDocument,                   new RateLimits(10.0M, 10) },
+              { RateLimitType.AplusContent_GetContentDocument,                      new RateLimits(10.0M, 10) },
+              { RateLimitType.AplusContent_UpdateContentDocument,                   new RateLimits(10.0M, 10) },
+              { RateLimitType.AplusContent_ListContentDocumentAsinRelations,        new RateLimits(10.0M, 10) },
+              { RateLimitType.AplusContent_PostContentDocumentAsinRelations,        new RateLimits(10.0M, 10) },
+              { RateLimitType.AplusContent_ValidateContentDocumentAsinRelations,    new RateLimits(10.0M, 10) },
+              { RateLimitType.AplusContent_SearchContentPublishRecords,             new RateLimits(10.0M, 10) },
+              { RateLimitType.AplusContent_PostContentDocumentApprovalSubmission,   new RateLimits(10.0M, 10) },
+              { RateLimitType.AplusContent_PostContentDocumentSuspendSubmission,    new RateLimits(10.0M, 10) },
             };
 
         }

@@ -5,15 +5,13 @@ This is an API Binding in .Net C# for the new Amazon Selling Partner API.
 
 This library is based on the output of [swagger-codegen](https://app.swaggerhub.com/home) with the [OpenAPI files provided by Amazon (Models)](https://github.com/amzn/selling-partner-api-models/tree/main/models) and has been modified by the contributors.
 
-The purpose of this package is to have an easy way of getting started with the Amazon Selling Partner API using C#, you can watch this 📷 [Youtube](https://www.youtube.com/watch?v=1gZJBCoMr70) 📣 video for easy start your project
+The purpose of this package is to have an easy way of getting started with the Amazon Selling Partner API using C#. You can watch this 📷 [YouTube](https://www.youtube.com/watch?v=1gZJBCoMr70) 📣 video to get started quickly.
 
 ---
 ### Requirements
 - [AWSSDK.SecurityToken](https://www.nuget.org/packages/AWSSDK.SecurityToken/)
 - [AWSSDK.SQS](https://www.nuget.org/packages/AWSSDK.SQS/)
 - [Microsoft.CSharp](https://www.nuget.org/packages/Microsoft.CSharp/)
-- [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)
-- [RestSharp](https://www.nuget.org/packages/RestSharp/)
 - [System.ComponentModel.Annotations](https://www.nuget.org/packages/System.ComponentModel.Annotations/)
 - [System.Reflection](https://www.nuget.org/packages/System.Reflection/)
 
@@ -26,60 +24,70 @@ Install-Package CSharpAmazonSpAPI
 ```
 
 ---
-### Tasks
+### Supported APIs
+
 #### Seller
 
-- [x] [OrdersV0](https://developer-docs.amazon.com/sp-api/docs/orders-api-v0-reference)
-- [x] [Reports](https://developer-docs.amazon.com/sp-api/docs/reports-api-v2021-06-30-reference)
-- [x] [FinancesV0](https://developer-docs.amazon.com/sp-api/docs/finances-api-reference)
-- [x] [Feeds](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference) [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-use-case-guide) [feedType](https://developer-docs.amazon.com/sp-api/docs/feed-type-values)
-- [x] [ListingsItems](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-reference)  [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide)
-- [x] [Restrictions](https://developer-docs.amazon.com/sp-api/docs/listings-restrictions-api-v2021-08-01-reference)  [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-restrictions-api-v2021-08-01-use-case-guide)
-- [x] [ProductTypes](https://developer-docs.amazon.com/sp-api/docs/product-type-definitions-api-v2020-09-01-reference)  [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-type-api-use-case-guide)
-- [x] [Uploads](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference)  [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/uploads-api-use-case-guide)
-- [x] [shipmentInvoicingV0](https://developer-docs.amazon.com/sp-api/docs/shipment-invoicing-api-v0-reference)
-- [x] [Shippings](https://developer-docs.amazon.com/sp-api/docs/shipping-api-v1-reference)
-- [x] [CatalogItemsV0](https://developer-docs.amazon.com/sp-api/docs/catalog-items-api-v0-reference)
-- [x] [CatalogItemsV20220401](https://developer-docs.amazon.com/sp-api/docs/catalog-items-api-v2022-04-01-reference)
-- [x] [FBAInventory](https://developer-docs.amazon.com/sp-api/docs/fbainventory-api-v1-reference)
-- [x] [FBASmallAndLight](https://developer-docs.amazon.com/sp-api/docs/fbasmallandlight-api-v1-reference)
-- [x] [FBAInboundEligibility](https://developer-docs.amazon.com/sp-api/docs/fbainboundeligibility-api-v1-reference)
-- [x] [FulFillmentInbound](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v0-reference)
-- [x] [FulFillmentOutbound](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-api-v2020-07-01-reference)
-- [x] [MerchantFulFillment](https://developer-docs.amazon.com/sp-api/docs/merchant-fulfillment-api-v0-reference)
-- [x] [Messaging](https://developer-docs.amazon.com/sp-api/docs/messaging-api-v1-reference)
-- [x] [Notifications](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-reference)  [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide)
-- [x] [ProductFeesV0](https://developer-docs.amazon.com/sp-api/docs/product-fees-api-v0-reference)
-- [x] [ProductPricingV0](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v0-reference)
-- [x] [Sales](https://developer-docs.amazon.com/sp-api/docs/sales-api-v1-reference)
-- [x] [Sellers](https://developer-docs.amazon.com/sp-api/docs/sellers-api-v1-reference)
-- [ ] [Services](https://developer-docs.amazon.com/sp-api/docs/services-api-v1-reference)
-- [x] [Solicitations](https://developer-docs.amazon.com/sp-api/docs/solicitations-api-v1-reference)
-- [x] [Token](https://developer-docs.amazon.com/sp-api/docs/tokens-api-v2021-03-01-reference)  [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/tokens-api-use-case-guide)
-- [x] [Authorization](https://developer-docs.amazon.com/sp-api/docs/authorization-api-v1-reference)
-- [x] [Easy Ship](https://developer-docs.amazon.com/sp-api/docs/easy-ship-api-v2022-03-23-reference)
-- [ ] [A+ Content](https://developer-docs.amazon.com/sp-api/docs/selling-partner-api-for-a-content-management)
-- [ ] [Replenishment](https://developer-docs.amazon.com/sp-api/docs/replenishment-api-v2022-11-07-reference)
+| API | Status | Notes / Use Case Guide |
+| --- | :---: | --- |
+| [OrdersV0](https://developer-docs.amazon.com/sp-api/docs/orders-api-v0-reference) | ✅ | |
+| [Reports](https://developer-docs.amazon.com/sp-api/docs/reports-api-v2021-06-30-reference) | ✅ | |
+| [FinancesV0](https://developer-docs.amazon.com/sp-api/docs/finances-api-reference) | ✅ | |
+| [Feeds](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference) | ✅ | [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-use-case-guide) · [feedType](https://developer-docs.amazon.com/sp-api/docs/feed-type-values) |
+| [ListingsItems](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-reference) | ✅ | [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-items-api-v2021-08-01-use-case-guide) |
+| [Restrictions](https://developer-docs.amazon.com/sp-api/docs/listings-restrictions-api-v2021-08-01-reference) | ✅ | [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/listings-restrictions-api-v2021-08-01-use-case-guide) |
+| [ProductTypes](https://developer-docs.amazon.com/sp-api/docs/product-type-definitions-api-v2020-09-01-reference) | ✅ | [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-type-api-use-case-guide) |
+| [Uploads](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference) | ✅ | [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/uploads-api-use-case-guide) |
+| [shipmentInvoicingV0](https://developer-docs.amazon.com/sp-api/docs/shipment-invoicing-api-v0-reference) | ✅ | |
+| [Shippings](https://developer-docs.amazon.com/sp-api/docs/shipping-api-v1-reference) | ✅ | |
+| [CatalogItemsV0](https://developer-docs.amazon.com/sp-api/docs/catalog-items-api-v0-reference) | ✅ | |
+| [CatalogItemsV20220401](https://developer-docs.amazon.com/sp-api/docs/catalog-items-api-v2022-04-01-reference) | ✅ | |
+| [FBAInventory](https://developer-docs.amazon.com/sp-api/docs/fbainventory-api-v1-reference) | ✅ | |
+| [FBASmallAndLight](https://developer-docs.amazon.com/sp-api/docs/fbasmallandlight-api-v1-reference) | ✅ | |
+| [FBAInboundEligibility](https://developer-docs.amazon.com/sp-api/docs/fbainboundeligibility-api-v1-reference) | ✅ | |
+| [FulFillmentInbound](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v0-reference) | ✅ | |
+| [FulFillmentOutbound](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-api-v2020-07-01-reference) | ✅ | |
+| [MerchantFulFillment](https://developer-docs.amazon.com/sp-api/docs/merchant-fulfillment-api-v0-reference) | ✅ | |
+| [Messaging](https://developer-docs.amazon.com/sp-api/docs/messaging-api-v1-reference) | ✅ | |
+| [Notifications](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-reference) | ✅ | [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/notifications-api-v1-use-case-guide) |
+| [ProductFeesV0](https://developer-docs.amazon.com/sp-api/docs/product-fees-api-v0-reference) | ✅ | |
+| [ProductPricingV0](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v0-reference) | ✅ | |
+| [Sales](https://developer-docs.amazon.com/sp-api/docs/sales-api-v1-reference) | ✅ | |
+| [Sellers](https://developer-docs.amazon.com/sp-api/docs/sellers-api-v1-reference) | ✅ | |
+| [Services](https://developer-docs.amazon.com/sp-api/docs/services-api-v1-reference) | ✅ | `getServiceJobByServiceJobId`, `getServiceJobs`, `cancelServiceJobByServiceJobId`, `completeServiceJobByServiceJobId` |
+| [Solicitations](https://developer-docs.amazon.com/sp-api/docs/solicitations-api-v1-reference) | ✅ | |
+| [Token](https://developer-docs.amazon.com/sp-api/docs/tokens-api-v2021-03-01-reference) | ✅ | [Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/tokens-api-use-case-guide) |
+| [Authorization](https://developer-docs.amazon.com/sp-api/docs/authorization-api-v1-reference) | ✅ | |
+| [Easy Ship](https://developer-docs.amazon.com/sp-api/docs/easy-ship-api-v2022-03-23-reference) | ✅ | |
+| [A+ Content](https://developer-docs.amazon.com/sp-api/docs/selling-partner-api-for-a-content-management) | ✅ | |
+| [Replenishment](https://developer-docs.amazon.com/sp-api/docs/replenishment-api-v2022-11-07-reference) | ✅ | `listOffers`, `listOfferMetrics`, `getSellingPartnerMetrics` |
+| [External Fulfillment Shipments](https://developer-docs.amazon.com/sp-api/reference/externalfulfillmentshipments-api-v2024-09-11) | ✅ | `getShipments`, `getShipment`, `processShipment`, `createPackages`, `updatePackage`, `retrieveShippingOptions`, `generateShipLabels`, `generateInvoice`, `retrieveInvoice`, `updatePackageStatus` |
+| [Data Kiosk (v2023-11-15)](https://developer-docs.amazon.com/sp-api/reference/datakiosk-api-v2023-11-15-reference) | ✅ | `getQueries`, `createQuery`, `getQuery`, `cancelQuery`, `getDocument` |
 
+#### Vendor
 
-#### Vendor 
+| API | Status | Notes |
+| --- | :---: | --- |
+| [VendorDirectFulfillmentInventoryV1](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-inventory-api-v1-reference) | ✅ | |
+| [VendorDirectFulfillmentOrdersV1](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-orders-api-v1-reference) | ✅ | |
+| [VendorDirectFulfillmentPaymentsV1](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-payments-api-v1-reference) | ✅ | `submitInvoice` |
+| [VendorDirectFulfillmentShippingV1](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-shipping-api-v1-reference) | ✅ | `getShippingLabels`, `submitShippingLabelRequest`, `getShippingLabel`, `submitShipmentConfirmations`, `submitShipmentStatusUpdates`, `getCustomerInvoices`, `getCustomerInvoice`, `getPackingSlips`, `getPackingSlip` |
+| [VendorDirectFulfillmentTransactionsV1](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-transactions-api-v1-reference) | ✅ | `getTransactionStatus` |
+| [VendorOrders](https://developer-docs.amazon.com/sp-api/docs/vendor-orders-api-v1-reference) | ✅ | |
+| [vendorInvoices](https://developer-docs.amazon.com/sp-api/docs/vendor-invoices-api-v1-reference) | ✅ | `submitInvoices` |
+| [VendorShipments](https://developer-docs.amazon.com/sp-api/docs/vendor-shipments-api-v1-reference) | ✅ | `submitShipmentConfirmations`, `submitShipments`, `getShipmentDetails`, `getShipmentLabels` |
+| [VendorTransactionStatus](https://developer-docs.amazon.com/sp-api/docs/vendor-transaction-status-api-v1-reference) | ✅ | |
 
-- [ ] [VendorDirectFulfillmentInventoryV1](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-inventory-api-v1-reference)
-- [x] [VendorDirectFulfillmentOrdersV1](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-orders-api-v1-reference)
-- [ ] [VendorDirectFulfillmentPaymentsV1](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-payments-api-v1-reference)
-- [ ] [VendorDirectFulfillmentShippingV1](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-shipping-api-v1-reference)
-- [ ] [VendorDirectFulfillmentTransactionsV1](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-transactions-api-v1-reference)
-- [x] [VendorOrders](https://developer-docs.amazon.com/sp-api/docs/vendor-orders-api-v1-reference)
-- [ ] [vendorInvoices](https://developer-docs.amazon.com/sp-api/docs/vendor-invoices-api-v1-reference)
-- [ ] [VendorShipments](https://developer-docs.amazon.com/sp-api/docs/vendor-shipments-api-v1-reference)
-- [ ] [VendorTransactionStatus](https://developer-docs.amazon.com/sp-api/docs/vendor-transaction-status-api-v1-reference)
+> **Legend:** ✅ Supported · ⬜ Not yet implemented
 
 
 
 ---
 ## Keys
-To get all keys needed you need to follow this step [Creating and configuring IAM policies and entities](https://developer-docs.amazon.com/sp-api/docs/creating-and-configuring-iam-policies-and-entities) and then you need to [Registering your Application](https://developer-docs.amazon.com/sp-api/docs/registering-your-application) then [Authorizing Selling Partner API applications
-](https://developer-docs.amazon.com/sp-api/docs/authorizing-selling-partner-api-applications#step-1-request-a-login-with-amazon-access-token)
+To get all the keys you need, follow these steps:
+1. [Create and configure IAM policies and entities](https://developer-docs.amazon.com/sp-api/docs/creating-and-configuring-iam-policies-and-entities)
+2. [Register your Application](https://developer-docs.amazon.com/sp-api/docs/registering-your-application)
+3. [Authorize Selling Partner API applications](https://developer-docs.amazon.com/sp-api/docs/authorizing-selling-partner-api-applications#step-1-request-a-login-with-amazon-access-token)
 
 
 | Name | Description |
@@ -90,15 +98,20 @@ To get all keys needed you need to follow this step [Creating and configuring IA
 | RefreshToken | Check how to get [RefreshToken](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/developer-guide/SellingPartnerApiDeveloperGuide.md#Self-authorization) |
 
 
-For more information about keys please check [New Amazon doc for create keys Developer ](https://developer-docs.amazon.com/sp-api/docs/creating-and-configuring-iam-policies-and-entities) , If you are not registered as developer please [Register](https://developer.amazonservices.com/) to be able to create application. 
+For more information about keys, check the [Amazon developer documentation](https://developer-docs.amazon.com/sp-api/docs/creating-and-configuring-iam-policies-and-entities). If you are not registered as a developer, please [Register](https://developer.amazonservices.com/) to be able to create an application.
 
 ---
 ## Usage
 
-> ### Please be aware there has been a change to the _Orders.GetOrderAddress()_ method please reference the new sample code for more details.
+> ### Heads-up: Amazon-side changes affecting this library
+>
+> - **Catalog Items API v0 was removed by Amazon on 2025-03-31.** `CatalogItem.ListCatalogItems`, `CatalogItem.ListCatalogCategories`, and `CatalogItem.GetCatalogItemJson` are now marked obsolete because the underlying endpoints no longer exist. Use the 2022-04-01 methods (`SearchCatalogItems202204`, `GetCatalogItem202204`) instead.
+> - **XML feed types (e.g. the legacy inventory feed) were turned off on 2025-07-31.** If you previously submitted inventory updates with `_POST_INVENTORY_AVAILABILITY_DATA_` or similar XML feed types, migrate to `FeedType.JSON_LISTINGS_FEED` with a JSON-Patch payload (see `FeedsSample.cs`).
+> - **Orders API v0 will be removed on 2027-03-27.** All six v0 operations (`getOrders`, `getOrder`, `getOrderBuyerInfo`, `getOrderAddress`, `getOrderItems`, `getOrderItemsBuyerInfo`) will start failing on that date. For new code, prefer `amazonConnection.OrdersV20260101` (Orders API v2026-01-01), which collapses those six operations into `getOrder` and `searchOrders`.
+> - **`Address.Name` (Orders v0) is now optional** as of Amazon's 2025-10 release. The constructor in `AmazonSpApiSDK.Models.Orders.Address` no longer throws when `name` is null — handle null `Name` defensively in your code.
 
 ### Configuration
-You can configure a connection like so please see [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/Program.cs) for the relevant code file.
+You can configure a connection as shown below. See [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/Program.cs) for the relevant code file.
 ```CSharp
 AmazonConnection amazonConnection = new AmazonConnection(new AmazonCredential()
 {
@@ -124,40 +137,58 @@ AmazonConnection amazonConnection = new AmazonConnection(new AmazonCredential()
 
 ### Configuration using a proxy
 Please see [here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/Program.cs) for the relevant code file.
->```csharp
->AmazonConnection amazonConnection = new AmazonConnection(new AmazonCredential()
->{
->     ClientId = "amzn1.application-XXX-client.XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
->     ClientSecret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
->     RefreshToken= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
->     MarketPlaceID = "A2VIGQ35RCS4UG",
->     ProxyAddress = "http(s)://xxx.xxx.xxx.xxx:xxxx",
->});
->```
->> * Assign your proxy address to the ProxyAddress Property and you'll be able to use a proxy account. 
->>
->> ***This is not required and will operate normally without the ProxyAddress being set.***
 
-### Order List, For more orders sample please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/ReportsSample.cs).
+The `Proxy` property accepts any `IWebProxy` implementation:
+```csharp
+AmazonConnection amazonConnection = new AmazonConnection(new AmazonCredential()
+{
+     ClientId = "amzn1.application-XXX-client.XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+     ClientSecret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+     RefreshToken= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+     MarketPlaceID = "A2VIGQ35RCS4UG",
+     Proxy = new System.Net.WebProxy("http://xxx.xxx.xxx.xxx:xxxx"),
+});
+```
+
+For an authenticated proxy, assign any `IWebProxy` implementation -- for example, a `WebProxy` with credentials:
+```csharp
+AmazonConnection amazonConnection = new AmazonConnection(new AmazonCredential()
+{
+     ClientId = "amzn1.application-XXX-client.XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+     ClientSecret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+     RefreshToken= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+     MarketPlaceID = "A2VIGQ35RCS4UG",
+     Proxy = new System.Net.WebProxy("http://xxx.xxx.xxx.xxx:xxxx")
+     {
+         Credentials = new System.Net.NetworkCredential("username", "password")
+     },
+});
+```
+> ***Proxy is not required and will operate normally without it being set.***
+
+---
+
+### Order List
+For more order samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/OrdersSample.cs).
 ```CSharp
-ParameterOrderList serachOrderList = new ParameterOrderList();
-serachOrderList.CreatedAfter = DateTime.UtcNow.AddMinutes(-600000);
-serachOrderList.OrderStatuses = new List<OrderStatuses>();
-serachOrderList.OrderStatuses.Add(OrderStatuses.Canceled);
-var orders = amazonConnection.Orders.GetOrders(serachOrderList);
+ParameterOrderList searchOrderList = new ParameterOrderList();
+searchOrderList.CreatedAfter = DateTime.UtcNow.AddMinutes(-600000);
+searchOrderList.OrderStatuses = new List<OrderStatuses>();
+searchOrderList.OrderStatuses.Add(OrderStatuses.Canceled);
+var orders = amazonConnection.Orders.GetOrders(searchOrderList);
 
 ```
 
 
 ### Order List with parameter
 ```CSharp
-ParameterOrderList serachOrderList = new ParameterOrderList();
-serachOrderList.CreatedAfter = DateTime.UtcNow.AddHours(-24);
-serachOrderList.OrderStatuses = new List<OrderStatuses>();
-serachOrderList.OrderStatuses.Add(OrderStatuses.Unshipped);
-serachOrderList.MarketplaceIds = new List<string> { MarketPlace.UnitedArabEmirates.ID };
+ParameterOrderList searchOrderList = new ParameterOrderList();
+searchOrderList.CreatedAfter = DateTime.UtcNow.AddHours(-24);
+searchOrderList.OrderStatuses = new List<OrderStatuses>();
+searchOrderList.OrderStatuses.Add(OrderStatuses.Unshipped);
+searchOrderList.MarketplaceIds = new List<string> { MarketPlace.UnitedArabEmirates.ID };
 
-var orders = amazonConnection.Orders.GetOrders(serachOrderList);
+var orders = amazonConnection.Orders.GetOrders(searchOrderList);
 
 ```
 
@@ -176,7 +207,7 @@ var orders = _amazonConnection.Orders.GetOrders(parameterOrderList);
 
 ```
 
-### Order List with parameter including PII data Advance (if you want to get specific data Elements object only)
+### Order List with parameter including PII data — Advanced (if you want to get specific data elements only)
 ```CSharp
 var parameterOrderList = new ParameterOrderList
         {
@@ -221,7 +252,8 @@ var orders = amazonConnection.Orders.GetOrders
 );
 ```
 
-### Report List, For more report sample please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/OrdersSample.cs).
+### Report List
+For more report samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/ReportsSample.cs).
 ```CSharp
 var parameters = new ParameterReportList();
 parameters.pageSize = 100;
@@ -259,7 +291,7 @@ var data = amazonConnection.Reports.GetReportDocument("50039018869997",true);
 
 
 ### Report Manager 🚀🧑‍🚀✨
-Easy way to get the report you need and convert the file return from amazon to class or list, this feature only ready for some reports as its will take much times to finish for  [All report type](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md)  .... 
+An easy way to get the report you need and convert the file returned from Amazon to a class or list. This feature is only available for some reports, as it takes significant effort to cover all [report types](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reporttype-values.md).
 ```CSharp
 ReportManager reportManager = new ReportManager(amazonConnection);
 var products = reportManager.GetProducts(); //GET_MERCHANT_LISTINGS_ALL_DATA
@@ -273,6 +305,7 @@ var reimbursementsOrder = reportManager.GetReimbursementsOrder(180); //GET_FBA_R
 var feedbacks = reportManager.GetFeedbackFromDays(180); //GET_SELLER_FEEDBACK_DATA
 var LedgerDetails = reportManager.GetLedgerDetailAsync(10); //GET_LEDGER_DETAIL_VIEW_DATA
 var UnsuppressedInventory = reportManager.GetUnsuppressedInventoryDataAsync().ConfigureAwait(false).GetAwaiter().GetResult(); //GET_FBA_MYI_UNSUPPRESSED_INVENTORY_DATA
+var sellerPerformance = reportManager.GetSellerPerformance(); //GET_V2_SELLER_PERFORMANCE_REPORT
 ```
 
 
@@ -370,8 +403,36 @@ var data = amazonConnection.ProductPricing.GetCompetitivePricing(
  await priceDemo.GetFeaturedOfferExpectedPriceBatch();
 ```
 
+### GetCompetitiveSummary (v2022-05-01)
+The 2022-05-01 batch operation returns featured buying options, reference prices, lowest priced offers, and **similar items** (the `similarItems` array Amazon added in April 2026) for up to 20 ASIN/marketplace pairs per call. Rate limit is strict — 0.033 req/s, burst 1.
 
-### Notifications Create Destination, For more Notifications sample please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/NotificationsSample.cs).
+```CSharp
+var response = await amazonConnection.ProductPricing.GetCompetitiveSummaryAsync(new CompetitiveSummaryBatchRequest
+{
+    Requests = new List<CompetitiveSummaryRequest>
+    {
+        new CompetitiveSummaryRequest
+        {
+            Asin          = "B00CZC5F0G",
+            MarketplaceId = MarketPlace.UnitedArabEmirates.ID,
+            IncludedData  = new List<CompetitiveSummaryIncludedData>
+            {
+                CompetitiveSummaryIncludedData.similarItems
+            },
+        }
+    }
+});
+
+// Read the new similarItems array.
+foreach (var r in response.Responses)
+    foreach (var group in r.Body?.SimilarItems ?? new List<SimilarItems>())
+        foreach (var item in group.Items)
+            Console.WriteLine($"Similar ASIN: {item.Asin}");
+```
+
+
+### Notifications — Create Destination
+For more notification samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/NotificationsSample.cs).
 ```CSharp
 
 //EventBridge
@@ -397,7 +458,8 @@ var dataSqs = amazonConnection.Notification.CreateDestination(
     });
 ```
 
-### Notifications Create Subscription, For more Notifications sample please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/NotificationsSample.cs).
+### Notifications — Create Subscription
+For more notification samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/NotificationsSample.cs).
 ```CSharp
 
 //SQS
@@ -410,39 +472,155 @@ var result = amazonConnection.Notification.CreateSubscription(
     });
 ```
 
-### Notifications read messages
+> **One subscription per `NotificationType`.** Amazon doesn't let a single subscription cover multiple notification types — call `CreateSubscription` once per type. You **can** reuse the same `destinationId` (the same SQS queue) across all of them. To handle LWA secret rotation, add two extra calls pointing at the same destination:
+>
+> ```CSharp
+> // Receive the new secret on rotation.
+> amazonConnection.Notification.CreateSubscription(new ParameterCreateSubscription
+> {
+>     notificationType = NotificationType.APPLICATION_OAUTH_CLIENT_NEW_SECRET,
+>     destinationId    = "xxxxxxxxxxxxxxx",   // same destination as your other subscriptions
+>     payloadVersion   = "1.0",
+> });
+>
+> // Get advance warning before the current secret expires.
+> amazonConnection.Notification.CreateSubscription(new ParameterCreateSubscription
+> {
+>     notificationType = NotificationType.APPLICATION_OAUTH_CLIENT_SECRET_EXPIRY,
+>     destinationId    = "xxxxxxxxxxxxxxx",
+>     payloadVersion   = "1.0",
+> });
+> ```
+>
+> See [Application Management — rotate the LWA client secret](#application-management-v2023-11-30--rotate-the-lwa-client-secret) for the full rotation flow.
+
+### Notifications — Read Messages
+
+> **Tip:** if your subscriptions include `APPLICATION_OAUTH_CLIENT_NEW_SECRET`, wrap your `IMessageReceiver` with [`RotationApplyingMessageReceiver`](#application-management-v2023-11-30--rotate-the-lwa-client-secret) so a rotated client secret is applied to `amazonConnection.Credentials.ClientSecret` automatically before your receiver sees the message.
+
+How the receive loop behaves:
+
+- **Long polling is on by default** (20 seconds). Leave `WaitTimeSeconds` unset unless you have a reason to change it; passing `0` forces short polling, which returns fewer messages per call and adds a 5 second pause between empty receives.
+- **Up to 10 messages are received per call**, handed to your receiver one by one, then deleted with a single batch call.
+- **Deletion** is controlled by `isDeleteNotificationAfterRead` (default `true` for `IMessageReceiver`). Implement `IMessageReceiverWithResult` instead and pass `false` if you want to decide per message - return `true` to delete, `false` to leave the message for redelivery after its visibility timeout.
+- **One loop per call.** To drain a queue that has built up a backlog, start several `StartReceivingNotificationMessagesAsync` tasks against the same queue - SQS hands each receive call a different set of messages.
+
 ```CSharp
 
-var SQS_URL = "https://sqs.us-east-2.amazonaws.com/9999999999999/IUSER_SQS";
-ParameterMessageReceiver param = new ParameterMessageReceiver(
-                    Environment.GetEnvironmentVariable("AccessKey"), 
-                    Environment.GetEnvironmentVariable("SecretKey"), 
-                    SQS_URL, Amazon.RegionEndpoint.USEast2);
+var SQS_URL = Environment.GetEnvironmentVariable("SQS_URL");
+var param = new ParameterMessageReceiver(
+    Environment.GetEnvironmentVariable("AccessKey"),
+    Environment.GetEnvironmentVariable("SecretKey"),
+    SQS_URL,
+    Amazon.RegionEndpoint.USEast2,
+    WaitTimeSeconds: 20); // Optional - long polling (20s) is the default; pass 0 for short polling
 
-CustomMessageReceiver messageReceiver = new CustomMessageReceiver();
+var messageReceiver = new CustomMessageReceiver();
 
+// Use CancellationToken for graceful shutdown and wrap in a restart loop
+// so the listener recovers from transient errors automatically.
+var cts = new CancellationTokenSource();
+while (!cts.Token.IsCancellationRequested)
+{
+    try
+    {
+        // Static method — no instance needed
+        await NotificationService.StartReceivingNotificationMessagesAsync(
+            param, messageReceiver, cancellationToken: cts.Token);
+    }
+    catch (OperationCanceledException) when (cts.Token.IsCancellationRequested)
+    {
+        break; // Graceful shutdown
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Notification listener crashed, restarting in 10s: {ex.Message}");
+        await Task.Delay(TimeSpan.FromSeconds(10), cts.Token);
+    }
+}
 
-amazonConnection.Notification.StartReceivingNotificationMessages(param, messageReceiver);
 public class CustomMessageReceiver : IMessageReceiver
 {
-     public void ErrorCatch(Exception ex)
-     {
-         //Your code here
-     }
+    // Track processed notification IDs to handle SQS duplicate delivery
+    private readonly ConcurrentDictionary<string, byte> _processedNotificationIds = new();
+    private readonly ConcurrentQueue<string> _idQueue = new();
+    private const int MaxTrackedIds = 10_000;
 
-     public void NewMessageRevicedTriger(NotificationMessageResponce message)
-     {
-         //Your Code here
-     }
+    public void ErrorCatch(Exception ex)
+    {
+        Console.WriteLine($"Notification error: {ex.Message}");
+    }
+
+    public void NewMessageRevicedTriger(NotificationMessageResponce message)
+    {
+        // Deduplicate: SQS standard queues may deliver the same message more than once
+        var notificationId = message?.NotificationMetadata?.NotificationId;
+        if (notificationId != null && !_processedNotificationIds.TryAdd(notificationId, 0))
+            return;
+
+        // Cap the dedup cache so it doesn't grow forever
+        if (notificationId != null)
+        {
+            _idQueue.Enqueue(notificationId);
+            while (_idQueue.Count > MaxTrackedIds && _idQueue.TryDequeue(out var oldId))
+                _processedNotificationIds.TryRemove(oldId, out _);
+        }
+
+        //Your Code here
+    }
 }
 
 ```
 
-### Feed Submit
-Here full sample for submit feed to change price and generate XML and get final report for result same as in [doc](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/feeds-api-use-case-guide/feeds-api-use-case-guide_2021-06-30.md).
-Notes: not all [feed type](https://github.com/amzn/selling-partner-api-docs/blob/main/references/feeds-api/feedtype-values.md) finished as it's big work and effort but all classes are partial for easy change and you can generate XML outside and use our library to get data, now we support only submit existing product, change quantity and change price , I list most of XSD here Source\FikaAmazonAPI\ConstructFeed\xsd its will help you easy generate class and add it in your app to generate final feed xml.
+### Notifications — End-to-End SQS Setup
+Complete workflow following the [Amazon SQS notification setup guide](https://developer-docs.amazon.com/sp-api/docs/set-up-notifications-with-amazon-sqs). Before running this code, grant SP-API permission to write to your SQS queue in the AWS Console.
 
-#### Feed Submit for change price , For more Feed sample please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/FeedsSample.cs).
+> If you also subscribe to `APPLICATION_OAUTH_CLIENT_NEW_SECRET` here, see [Notifications — Read Messages](#notifications--read-messages) for the `RotationApplyingMessageReceiver` wrapper that auto-applies rotated secrets.
+
+```CSharp
+
+// Step 3: Create a destination (grantless operation — no seller authorization needed)
+var destination = amazonConnection.Notification.CreateDestination(
+    new Notifications.CreateDestinationRequest()
+    {
+        Name = "CompanyName_SQS",
+        ResourceSpecification = new Notifications.DestinationResourceSpecification
+        {
+            Sqs = new Notifications.SqsResource("arn:aws:sqs:us-east-2:9999999999999:NAME")
+        }
+    });
+
+// Step 4: Create a subscription using the destinationId from Step 3
+// processingDirective is optional — only supported for ANY_OFFER_CHANGED and ORDER_CHANGE
+var subscription = amazonConnection.Notification.CreateSubscription(
+    new ParameterCreateSubscription()
+    {
+        destinationId = destination.DestinationId,
+        notificationType = NotificationType.ANY_OFFER_CHANGED,
+        payloadVersion = "1.0",
+        processingDirective = new Notifications.ProcessingDirective
+        {
+            EventFilter = new Notifications.EventFilter
+            {
+                EventFilterType = "ANY_OFFER_CHANGED",
+                MarketplaceIds = new List<string> { "ATVPDKIKX0DER" },
+                AggregationSettings = new Notifications.AggregationSettings
+                {
+                    AggregationTimePeriod = Notifications.AggregationTimePeriod.FiveMinutes
+                }
+            }
+        }
+    });
+
+```
+
+### Feed Submit
+Here is a full sample for submitting a feed to change price, generate XML, and get the final processing report, same as in the [documentation](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/feeds-api-use-case-guide/feeds-api-use-case-guide_2021-06-30.md).
+
+> **Note:** Not all [feed types](https://github.com/amzn/selling-partner-api-docs/blob/main/references/feeds-api/feedtype-values.md) are implemented yet. All classes are `partial` for easy extension — you can generate XML outside the library and use it to submit data. Currently supported: submit existing product, change quantity, and change price. Most XSD files are listed in `Source\FikaAmazonAPI\ConstructFeed\xsd` to help you generate classes for your app.
+
+#### Feed Submit — Change Price
+For more feed samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/FeedsSample.cs).
 ```CSharp
 ConstructFeedService createDocument = new ConstructFeedService("{SellerID}", "1.02");
 
@@ -532,8 +710,105 @@ var processingReport = await amazonConnection.Feed.GetJsonFeedDocumentProcessing
 
 ```
 
+#### Website authorization workflow.
+```CSharp
+    [HttpGet("AuthorizeAmazon")]
+    public async Task<IActionResult> AuthorizeAmazon()
+    {
+        // Step 2-5 of the website authorization workflow.
 
-#### Feed Submit for change Quantity
+        // Step 2-3: Amazon calls our log-in URI with amazon_callback_uri.
+        var amazonCallbackUri = Request.Query["amazon_callback_uri"].ToString();
+        if (!string.IsNullOrEmpty(amazonCallbackUri))
+        {
+            var amazonState = Request.Query["amazon_state"].ToString();
+            var version = configuration["FikaAmazonAPI:AuthorizeVersion"];
+            var redirectUri = configuration["FikaAmazonAPI:AmazonCallbackUri"];
+
+            var generatedState = Guid.NewGuid().ToString("N");
+            Response.Cookies.Append("amazon_oauth_state", generatedState, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Lax,
+                Expires = DateTimeOffset.UtcNow.AddMinutes(5)
+            });
+
+            var query = new Dictionary<string, string?>
+            {
+                ["redirect_uri"] = redirectUri,
+                ["amazon_state"] = amazonState,
+                ["state"] = generatedState
+            };
+
+            if (!string.IsNullOrEmpty(version))
+            {
+                query["version"] = version;
+            }
+
+            Response.Headers["Referrer-Policy"] = "no-referrer";
+            var redirectUrl = QueryHelpers.AddQueryString(amazonCallbackUri, query!);
+            return Redirect(redirectUrl);
+        }
+
+        // Step 4-5: Amazon redirects back to our redirect_uri with authorization code.
+        var state = Request.Query["state"].ToString();
+        var sellingPartnerId = Request.Query["selling_partner_id"].ToString();
+        var mwsAuthToken = Request.Query["mws_auth_token"].ToString();
+        var code = Request.Query["spapi_oauth_code"].ToString();
+
+        var storedState = Request.Cookies["amazon_oauth_state"];
+        if (string.IsNullOrEmpty(state) || storedState != state)
+        {
+            return BadRequest("Invalid state");
+        }
+
+        Response.Cookies.Delete("amazon_oauth_state");
+
+        if (string.IsNullOrEmpty(code))
+        {
+            return BadRequest("Missing spapi_oauth_code");
+        }
+
+        var clientId = configuration["FikaAmazonAPI:ClientId"];
+        var clientSecret = configuration["FikaAmazonAPI:ClientSecret"];
+        var callbackUri = configuration["FikaAmazonAPI:AmazonCallbackUri"];
+
+        using var httpClient = new HttpClient();
+        var form = new FormUrlEncodedContent(new Dictionary<string, string>
+        {
+            ["grant_type"] = "authorization_code",
+            ["code"] = code,
+            ["client_id"] = clientId ?? string.Empty,
+            ["client_secret"] = clientSecret ?? string.Empty,
+            ["redirect_uri"] = callbackUri ?? string.Empty
+        });
+
+        using var response = await httpClient.PostAsync("https://api.amazon.com/auth/o2/token", form);
+        var responseBody = await response.Content.ReadAsStringAsync();
+        if (!response.IsSuccessStatusCode)
+        {
+            return BadRequest(responseBody);
+        }
+
+        using var document = JsonDocument.Parse(responseBody);
+        var refreshToken = document.RootElement.GetProperty("refresh_token").GetString();
+        var accessToken = document.RootElement.GetProperty("access_token").GetString();
+
+        return Json(new
+        {
+            state,
+            selling_partner_id = sellingPartnerId,
+            mws_auth_token = mwsAuthToken,
+            refresh_token = refreshToken,
+            access_token = accessToken
+        });
+    }
+
+```
+
+ 
+#### Feed Submit — Change Quantity
 ```CSharp
 ConstructFeedService createDocument = new ConstructFeedService("{SellerID}", "1.02");
 
@@ -563,7 +838,7 @@ var processingReport = amazonConnection.Feed.GetFeedDocumentProcessingReport(out
 
 ```
 
-#### Feed Submit for change ProdcutImage
+#### Feed Submit — Change Product Image
 ```CSharp
 public void SubmitFeedProductImage()
 {
@@ -583,7 +858,7 @@ public void SubmitFeedProductImage()
 }
 ```
 
-#### Feed Submit for change FULFILLMENT DATA (add tracking number for shipment)
+#### Feed Submit — Fulfillment Data (add tracking number for shipment)
 ```CSharp
 
 ConstructFeedService createDocument = new ConstructFeedService("{sellerId}", "1.02");
@@ -609,7 +884,7 @@ list.Add(new OrderFulfillmentMessage()
 ```
 
 
-#### Feed Submit for change Order Adjustments
+#### Feed Submit — Order Adjustments
 ```CSharp
 public void SubmitFeedOrderAdjustment()
 {
@@ -655,11 +930,11 @@ public void SubmitFeedOrderAdjustment()
 Please read this doc to get all information about this limitation
 https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits
 
-we calc waiting time by read x-amzn-RateLimit-Limit header 
+We calculate the waiting time by reading the `x-amzn-RateLimit-Limit` header:
 
 `int sleepTime = (int)((1 / header["x-amzn-RateLimit-Limit"] ) * 1000);`
 
-You can also disable libary from handelling limitaion by set IsActiveLimitRate=false in AmazonCredential
+You can also disable the library's rate limit handling by setting `IsActiveLimitRate = false` in `AmazonCredential`:
 ```CSharp
 var amazonConnection = new AmazonConnection(new AmazonCredential()
 {
@@ -671,8 +946,8 @@ var amazonConnection = new AmazonConnection(new AmazonCredential()
 
 ---
 
-## Enable debug mode
-You can also enable log for all http request and response you can set IsDebugMode=true in AmazonCredential
+## Enable Debug Mode
+You can enable logging for all HTTP requests and responses by setting `IsDebugMode = true` in `AmazonCredential`:
 ```CSharp
 var amazonConnection = new AmazonConnection(new AmazonCredential()
 {
@@ -684,7 +959,7 @@ var amazonConnection = new AmazonConnection(new AmazonCredential()
 
 ---
 
-## Get restrictions before try to add new lists
+## Get Restrictions Before Adding New Listings
 
 ```CSharp
 var result = amazonConnection.Restrictions.GetListingsRestrictions(
@@ -766,7 +1041,7 @@ var def = amazonConnection.ProductType.GetDefinitionsProductType(
    new Parameter.ProductTypes.GetDefinitionsProductTypeParameter()
     {
      productType = "PRODUCT",
-     requirements = RequirementsEnum.LISTING,
+     requirements = Requirements.LISTING,
      locale = AmazonSpApiSDK.Models.ProductTypes.LocaleEnum.en_US
      });
 ```
@@ -785,6 +1060,361 @@ var def = amazonConnection.ProductType.GetDefinitionsProductType(
      parameters.firstDayOfWeek = Constants.FirstDayOfWeek.monday;
 
      var sales = amazonConnection.Sales.GetOrderMetrics(parameters);
+```
+
+### Services — Get a service job by ID
+For more samples, see [`ServicesSample.cs`](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/ServicesSample.cs).
+```CSharp
+var serviceJob = amazonConnection.Services.GetServiceJobByServiceJobId("SJ-1234567890");
+
+// As of Amazon's April 2026 release, the response contains a payments[] array.
+var totalPaid = serviceJob.Payments?
+    .Where(p => p.Amount?.Value != null)
+    .Sum(p => p.Amount.Value);
+```
+
+### A+ Content (v2020-11-01)
+For more samples, see [`AplusContentSample.cs`](https://github.com/abuzuhri/coderzanjeer/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/AplusContentSample.cs). All ten operations share a 10 req/s, burst 10 rate limit; list/search ops auto-page internally.
+
+```CSharp
+// 1. List all A+ docs on the account.
+var docs = await amazonConnection.AplusContent.SearchContentDocumentsAsync();
+
+// 2. Fetch one with full content + metadata.
+var doc = await amazonConnection.AplusContent.GetContentDocumentAsync(
+    contentReferenceKey: docs.First().ContentReferenceKey,
+    includedDataSet:     new List<AplusIncludedDataType> { AplusIncludedDataType.CONTENTS, AplusIncludedDataType.METADATA });
+
+// 3. Create a minimal doc with one STANDARD_TEXT module.
+var created = await amazonConnection.AplusContent.CreateContentDocumentAsync(new PostContentDocumentRequest
+{
+    ContentDocument = new ContentDocument
+    {
+        Name        = "My new A+ doc",
+        ContentType = ContentType.EBC,
+        Locale      = "en-US",
+        ContentModuleList = new List<ContentModule>
+        {
+            new ContentModule
+            {
+                ContentModuleType = ContentModuleType.STANDARD_TEXT,
+                StandardText = new StandardTextModule
+                {
+                    Headline = new TextComponent { Value = "About this product" },
+                    Body     = new ParagraphComponent
+                    {
+                        TextList = new List<TextComponent>
+                        {
+                            new TextComponent { Value = "Replace with your product story." }
+                        }
+                    }
+                }
+            }
+        }
+    }
+});
+
+// 4. Link ASINs and submit for approval.
+await amazonConnection.AplusContent.PostContentDocumentAsinRelationsAsync(
+    created.ContentReferenceKey,
+    new PostContentDocumentAsinRelationsRequest { AsinSet = new List<string> { "B00CZC5F0G" } });
+await amazonConnection.AplusContent.PostContentDocumentApprovalSubmissionAsync(created.ContentReferenceKey);
+```
+
+### Application Management (v2023-11-30) — rotate the LWA client secret
+[`ApplicationManagementSample.cs`](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/ApplicationManagementSample.cs) shows the full flow.
+
+The HTTP response carries no useful body — the rotated secret is delivered **asynchronously to a developer-registered SQS queue** subscribed to the `APPLICATION_OAUTH_CLIENT_NEW_SECRET` notification. The pattern is:
+
+```CSharp
+// 1. One-time setup: subscribe to the rotation notifications.
+amazonConnection.Notification.CreateSubscription(new ParameterCreateSubscription
+{
+    notificationType = NotificationType.APPLICATION_OAUTH_CLIENT_NEW_SECRET,
+    destinationId    = yourSqsDestinationId,   // pre-existing destination on an SQS queue
+    payloadVersion   = "1.0",
+});
+
+// 2. Trigger rotation. Uses LWA grant_type=client_credentials with the rotation scope —
+//    the SDK handles that special auth path internally.
+amazonConnection.ApplicationManagement.RotateApplicationClientSecret();
+
+// 3. Poll your SQS queue. The SDK already deserializes the payload into
+//    NotificationMessageResponce.Payload.ApplicationOAuthClientNewSecret
+//    (an ApplicationOAuthClientNewSecretNotification with NewClientSecret +
+//    NewClientSecretExpiryTime + OldClientSecretExpiryTime).
+```
+
+#### Auto-applying the rotated secret
+If you already use `NotificationService.StartReceivingNotificationMessages*` for SQS, wrap your existing receiver in `RotationApplyingMessageReceiver` to apply rotated secrets automatically — your code keeps doing what it did before, the credential bag updates transparently, and your `onRotated` callback persists the rotated values to your database so the next process start picks them up.
+
+Persist **all four** fields:
+
+| Field | What to do with it |
+|---|---|
+| `payload.ClientId` | Row key. |
+| `payload.NewClientSecret` | Store **encrypted** (Key Vault / KMS / encrypted column). |
+| `payload.NewClientSecretExpiryTime` | When this new secret itself expires — schedule the next rotation before this. |
+| `payload.OldClientSecretExpiryTime` | Deadline to finish the cutover. Until this passes, both secrets work; after, only the new one does. |
+
+```CSharp
+var wrapped = new RotationApplyingMessageReceiver(
+    inner: myReceiver,
+    credentials: amazonConnection.Credentials,
+    onRotated: payload =>
+    {
+        // TODO: save these four values to your database, with NewClientSecret encrypted at rest.
+        // The SDK has already applied payload.NewClientSecret to amazonConnection.Credentials,
+        // so a transient DB error here doesn't break the running process — log and continue.
+        myDb.SaveRotatedSecret(
+            clientId:                 payload.ClientId,
+            newClientSecret:          payload.NewClientSecret,
+            newClientSecretExpiresAt: payload.NewClientSecretExpiryTime,
+            oldClientSecretExpiresAt: payload.OldClientSecretExpiryTime);
+    });
+
+NotificationService.StartReceivingNotificationMessages(param, wrapped);
+```
+
+A reference `IClientSecretStore` interface is in [`ApplicationManagementSample.cs`](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/ApplicationManagementSample.cs).
+
+To get advance warning before a secret expires, also subscribe to `NotificationType.APPLICATION_OAUTH_CLIENT_SECRET_EXPIRY` — its payload is `ApplicationOAuthClientSecretExpiryNotification` with a `ClientSecretExpiryTime`.
+
+### Replenishment (v2022-11-07) — Subscribe & Save
+For more samples, see [`ReplenishmentSample.cs`](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/ReplenishmentSample.cs). All three operations are rate-limited to 1 req/s, burst 1.
+
+```CSharp
+// 1. Find offers with paused or at-risk deliveries, sorted by inventory ascending.
+var atRisk = await amazonConnection.Replenishment.ListOffersAsync(new ListOffersRequest
+{
+    Pagination = new ListOffersRequestPagination { Limit = 100 },
+    Filters = new ListOffersRequestFilters
+    {
+        MarketplaceId = MarketPlace.US.ID,
+        ProgramTypes  = new List<ProgramType> { ProgramType.SUBSCRIBE_AND_SAVE },
+        DeliveriesConditions = new List<DeliveryConditionType>
+        {
+            DeliveryConditionType.NEXT_30_DAYS_DELIVERIES_PAUSED_PRICING,
+            DeliveryConditionType.NEXT_30_DAYS_DELIVERIES_AT_LOW_INVENTORY_RISK,
+        },
+    },
+    Sort = new ListOffersRequestSort { Order = SortOrder.ASC, Key = ListOffersSortKey.INVENTORY },
+});
+
+// 2. Per-offer metrics — now offer-level (SKU + FulfillmentChannelType) per April 2026 release.
+var perOffer = await amazonConnection.Replenishment.ListOfferMetricsAsync(new ListOfferMetricsRequest { /*...*/ });
+
+// 3. Seller-level metrics including the new REVENUE_PENETRATION metric.
+var spMetrics = await amazonConnection.Replenishment.GetSellingPartnerMetricsAsync(new GetSellingPartnerMetricsRequest
+{
+    AggregationFrequency = AggregationFrequency.MONTH,
+    TimeInterval = new TimeInterval { StartDate = monthStart, EndDate = monthEnd },
+    TimePeriodType = TimePeriodType.PERFORMANCE,
+    MarketplaceId = MarketPlace.US.ID,
+    ProgramTypes  = new List<ProgramType> { ProgramType.SUBSCRIBE_AND_SAVE },
+    Metrics = new List<Metric> { Metric.REVENUE_PENETRATION, Metric.TOTAL_SUBSCRIPTIONS_REVENUE },
+});
+```
+
+### Services — List, cancel, and complete service jobs
+```CSharp
+// Auto-pages through every result page and returns a flat list.
+var upcoming = amazonConnection.Services.GetServiceJobs(new ParameterGetServiceJobs
+{
+    scheduleStartDate = DateTime.UtcNow,
+    scheduleEndDate   = DateTime.UtcNow.AddDays(14),
+    serviceJobStatus  = new List<string> { "SCHEDULED", "PENDING_SCHEDULE" },
+    pageSize          = 50,
+    sortField         = "JOB_DATE",
+    sortOrder         = "ASC",
+});
+
+// Returns true when the request succeeds with no errors in the response body.
+amazonConnection.Services.CancelServiceJobByServiceJobId("SJ-1234567890", "BUYER_REQUESTED_CANCELLATION");
+amazonConnection.Services.CompleteServiceJobByServiceJobId("SJ-1234567890");
+```
+
+### External Fulfillment Shipments (v2024-09-11)
+For more samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/ExternalFulfillmentShipmentSample.cs).
+```CSharp
+// 1. List shipments — auto-pages through every result page and returns a flat list.
+//    Status is required. Set MaxNumberOfPages to stop after a given number of pages.
+var shipments = amazonConnection.ExternalFulfillmentShipment.GetShipments(new ParameterGetShipments
+{
+    Status           = Shipment.StatusEnum.CONFIRMED,
+    LocationId       = "LOCATION_ID",
+    MaxResults       = 50,
+    LastUpdatedAfter = DateTime.UtcNow.AddDays(-7),
+});
+
+// 2. Retrieve a single shipment.
+var shipment = amazonConnection.ExternalFulfillmentShipment.GetShipment("SHIPMENT_ID");
+
+// 3. Confirm (or REJECT) a shipment.
+amazonConnection.ExternalFulfillmentShipment.ProcessShipment("SHIPMENT_ID", ProcessShipmentOperation.CONFIRM,
+    new ShipmentAcknowledgementRequest
+    {
+        ReferenceId = "REFERENCE_ID",
+        LineItems = new List<LineItemWithReason>
+        {
+            new()
+            {
+                LineItem = new LineItem { Id = "LINE_ITEM_ID", Quantity = 1 },
+                Reason   = LineItemWithReason.ReasonEnum.CUSTOMERREQUESTED,
+            },
+        },
+    });
+
+// 4. Create packages for the shipment.
+amazonConnection.ExternalFulfillmentShipment.CreatePackages("SHIPMENT_ID", new Packages
+{
+    _Packages = new List<Package>
+    {
+        new()
+        {
+            Id     = "PACKAGE_ID",
+            Weight = new Weight { Value = "200.0", WeightUnit = Weight.WeightUnitEnum.G },
+            Status = Package.StatusEnum.CREATED,
+        },
+    },
+});
+
+// 5. Retrieve shipping options, then generate (or REGENERATE) ship labels.
+var options = amazonConnection.ExternalFulfillmentShipment.RetrieveShippingOptions("SHIPMENT_ID", "PACKAGE_ID");
+var labels  = amazonConnection.ExternalFulfillmentShipment.GenerateShipLabels("SHIPMENT_ID",
+    GenerateShipLabelsOperation.GENERATE, new ShipLabelsInput { PackageIds = new List<string> { "PACKAGE_ID" } },
+    "SHIPPING_OPTION_ID");
+
+// 6. Generate and retrieve the invoice.
+amazonConnection.ExternalFulfillmentShipment.GenerateInvoice("SHIPMENT_ID");
+var invoice = amazonConnection.ExternalFulfillmentShipment.RetrieveInvoice("SHIPMENT_ID");
+
+// 7. Mark a package as shipped (the API only accepts the SHIPPED status here).
+amazonConnection.ExternalFulfillmentShipment.UpdatePackageStatusShipped("SHIPMENT_ID", "PACKAGE_ID",
+    new PackageDeliveryStatus { Status = PackageStatus.SHIPPED });
+```
+### Vendor Direct Fulfillment Payments (v1) — Submit invoice
+For more samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/VendorDirectFulfillmentPaymentsSample.cs).
+```CSharp
+// Submit an invoice for a direct-fulfillment order. Returns a TransactionReference
+// whose TransactionId can be polled via amazonConnection.VendorTransactionStatus.
+var result = amazonConnection.VendorDirectFulfillmentPayments.SubmitInvoice(new SubmitInvoiceRequest
+{
+    Invoices = new List<InvoiceDetail>
+    {
+        new()
+        {
+            InvoiceNumber = "INV-0001",
+            InvoiceDate   = DateTime.UtcNow.ToString("o"),
+            RemitToParty  = new PartyIdentification { PartyId = "REMIT_TO_PARTY_ID" },
+            ShipFromParty = new PartyIdentification { PartyId = "SHIP_FROM_PARTY_ID" },
+            InvoiceTotal  = new Money { CurrencyCode = "USD", Amount = "100.00" },
+            Items = new List<InvoiceItem>
+            {
+                new()
+                {
+                    ItemSequenceNumber  = "1",
+                    InvoicedQuantity    = new ItemQuantity { Amount = 2, UnitOfMeasure = "Each" },
+                    NetCost             = new Money { CurrencyCode = "USD", Amount = "50.00" },
+                    PurchaseOrderNumber = "PO-123456",
+                },
+            },
+        },
+    },
+});
+```
+### Vendor Direct Fulfillment Transactions (v1) — Get transaction status
+For more samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/VendorDirectFulfillmentTransactionsSample.cs).
+```CSharp
+// Poll the status of a transaction returned by a direct-fulfillment submit operation
+// (e.g. SubmitInvoice, SubmitInventoryUpdate).
+var status = amazonConnection.VendorDirectFulfillmentTransactions.GetTransactionStatus("TRANSACTION_ID");
+
+if (status?._TransactionStatus?.Status == Transaction.StatusEnum.Failure)
+{
+    var errors = status._TransactionStatus.Errors; // inspect why it failed
+}
+```
+### Vendor Invoices (v1) — Submit invoices
+For more samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/VendorInvoicesSample.cs).
+```CSharp
+var result = amazonConnection.VendorInvoices.SubmitInvoices(new SubmitInvoicesRequest
+{
+    Invoices = new List<Invoice>
+    {
+        new()
+        {
+            Id              = "INV-0001",
+            ReferenceNumber = "PO-123456",
+            RemitToParty    = new PartyIdentification { PartyId = "REMIT_TO_PARTY_ID" },
+            ShipFromParty   = new PartyIdentification { PartyId = "SHIP_FROM_PARTY_ID" },
+            ShipToParty     = new PartyIdentification { PartyId = "SHIP_TO_PARTY_ID" },
+            InvoiceTotal    = new Money { CurrencyCode = "USD", Amount = "100.00" },
+        },
+    },
+});
+```
+
+### Vendor Shipments (v1) — Confirmations, details, labels
+For more samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/VendorShipmentsSample.cs).
+```CSharp
+// Submit shipment confirmations
+var txn = amazonConnection.VendorShipments.SubmitShipmentConfirmations(new SubmitShipmentConfirmationsRequest
+{
+    ShipmentConfirmations = new List<ShipmentConfirmation> { new() { ShipmentIdentifier = "SHIPMENT_ID" } },
+});
+
+// Get shipment details (page manually via Pagination.NextToken)
+var details   = amazonConnection.VendorShipments.GetShipmentDetails(new ParameterGetShipmentDetails { Limit = 10, SortOrder = "DESC" });
+var shipments = details?.Shipments;
+
+// Get transport labels
+var labels = amazonConnection.VendorShipments.GetShipmentLabels(new ParameterGetShipmentLabels { Limit = 10 });
+```
+
+### Vendor Direct Fulfillment Shipping (v1) — Labels, confirmations, invoices, packing slips
+For more samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/VendorDirectFulfillmentShippingSample.cs).
+```CSharp
+var shipping = amazonConnection.VendorDirectFulfillmentShipping;
+
+// Paged list operations share ParameterVendorDirectFulfillmentShippingList.
+var labelList = shipping.GetShippingLabels(new ParameterVendorDirectFulfillmentShippingList
+{
+    Limit = 10, SortOrder = "ASC", CreatedAfter = DateTime.UtcNow.AddDays(-7), CreatedBefore = DateTime.UtcNow,
+});
+
+var label   = shipping.GetShippingLabel("PURCHASE_ORDER_NUMBER");
+var invoice = shipping.GetCustomerInvoice("PURCHASE_ORDER_NUMBER");
+var slip    = shipping.GetPackingSlip("PURCHASE_ORDER_NUMBER");
+
+// Submit operations return a TransactionReference.
+shipping.SubmitShipmentConfirmations(new SubmitShipmentConfirmationsRequest
+{
+    ShipmentConfirmations = new List<ShipmentConfirmation> { new() { PurchaseOrderNumber = "PURCHASE_ORDER_NUMBER" } },
+});
+```
+### Data Kiosk (v2023-11-15) — GraphQL analytics queries
+For more samples, please check [Here](https://github.com/abuzuhri/Amazon-SP-API-CSharp/blob/main/Source/FikaAmazonAPI.SampleCode/DataKioskSample.cs).
+```CSharp
+// 1. Submit a GraphQL query (see Amazon's Data Kiosk schema for available datasets).
+var created = amazonConnection.DataKiosk.CreateQuery(new CreateQuerySpecification
+{
+    Query = @"query { analytics_salesAndTraffic_2024_04_24 { salesAndTrafficByDate(startDate: ""2024-01-01"" endDate: ""2024-01-07"" aggregateBy: DAY marketplaceIds: [""ATVPDKIKX0DER""]) { startDate sales { orderedProductSales { amount currencyCode } } } } }"
+});
+
+// 2. Poll the query until it finishes.
+var query = amazonConnection.DataKiosk.GetQuery(created.QueryId);
+
+// 3. When DONE, download the results document.
+if (query.ProcessingStatus == Query.ProcessingStatusEnum.DONE && !string.IsNullOrEmpty(query.DataDocumentId))
+{
+    var document = amazonConnection.DataKiosk.GetDocument(query.DataDocumentId);
+    var url = document.DocumentUrl; // gzip-compressed JSONL results
+}
+
+// List / cancel
+var list = amazonConnection.DataKiosk.GetQueries(new ParameterGetQueries { PageSize = 10 });
+amazonConnection.DataKiosk.CancelQuery(created.QueryId);
 ```
 ---
 ## Q & A
