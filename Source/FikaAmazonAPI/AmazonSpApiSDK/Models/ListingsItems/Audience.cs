@@ -34,7 +34,7 @@ namespace FikaAmazonAPI.AmazonSpApiSDK.Models.ListingsItems
         /// </summary>
         /// <param name="value">Name of the audience an offer is applicable to.</param>
         /// <param name="displayName">Localized display name for the audience.</param>
-        public Audience(OfferAudienceEnum? value = default(OfferAudienceEnum?), string displayName = default(string))
+        public Audience(string value = default(string), string displayName = default(string))
         {
             this.Value = value;
             this.DisplayName = displayName;
@@ -43,9 +43,9 @@ namespace FikaAmazonAPI.AmazonSpApiSDK.Models.ListingsItems
         /// <summary>
         /// Name of the audience an offer is applicable to.
         /// </summary>
-        /// <value>Name of the audience an offer is applicable to.</value>
+        /// <value>Name of the audience an offer is applicable to. A free string in the API (common values: ALL, B2B), so new audiences such as B2B_REAL_ESTATE deserialize.</value>
         [DataMember(Name= "value", EmitDefaultValue=false)]
-        public OfferAudienceEnum? Value { get; set; }
+        public string Value { get; set; }
 
         /// <summary>
         /// Localized display name for the audience.
